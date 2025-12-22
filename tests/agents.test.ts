@@ -16,6 +16,7 @@ import {
   printAgentStatus,
   getAgentPriorityString,
 } from "../src/agents.js";
+import { _resetEnvLoadedForTesting } from "../src/timeout-config.js";
 
 // Mock child_process
 vi.mock("node:child_process", () => ({
@@ -960,6 +961,19 @@ describe("Agents", () => {
   });
 
   describe("getAgentPriorityString", () => {
+    let originalAgentEnv: string | undefined;
+
+    beforeEach(() => {
+      originalAgentEnv = process.env.AGENT_FOREMAN_AGENTS;
+      delete process.env.AGENT_FOREMAN_AGENTS;
+      _resetEnvLoadedForTesting(); // Ensure env is reloaded
+    });
+
+    afterEach(() => {
+      process.env.AGENT_FOREMAN_AGENTS = originalAgentEnv;
+      _resetEnvLoadedForTesting(); // Ensure env is reloaded
+    });
+
     it("should return capitalized agent names joined with ' > '", () => {
       // Uses default priority: claude > codex > gemini
       const result = getAgentPriorityString();

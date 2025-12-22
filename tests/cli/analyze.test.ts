@@ -42,6 +42,7 @@ describe("runAnalyze", () => {
     vi.mocked(aiScanner.aiResultToSurvey).mockReturnValue(mockSurvey as any);
     vi.mocked(aiScanner.generateAISurveyMarkdown).mockReturnValue("# Survey Markdown");
     vi.mocked(agents.getAgentPriorityString).mockReturnValue("10");
+    vi.spyOn(global.console, 'log').mockImplementation(() => {});
   });
 
   it("should generate project survey and write to output path", async () => {
@@ -61,5 +62,13 @@ describe("runAnalyze", () => {
     await expect(runAnalyze("docs/survey.md", false)).rejects.toThrow("process.exit called");
 
     expect(mockExit).toHaveBeenCalledWith(1);
+  });
+
+  it("should generate project survey and write to docs/PROJECT_SURVEY.md with summary stats output", async () => {
+    const outputPath = "docs/PROJECT_SURVEY.md";
+    await runAnalyze(outputPath, false);
+
+    expect(fs.writeFile).toHaveBeenCalledWith(expect.stringContaining(outputPath), expect.any(String));
+    expect(console.log).toHaveBeenCalledWith(expect.stringContaining("summary stats"));
   });
 });

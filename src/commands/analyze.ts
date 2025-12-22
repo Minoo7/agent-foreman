@@ -48,6 +48,8 @@ export async function runAnalyze(outputPath: string, verbose: boolean): Promise<
   console.log(chalk.gray(`  Features: ${survey.features.length}`));
   console.log(chalk.gray(`  Completion: ${survey.completion.overall}%`));
 
+  console.log(chalk.green("✓ Project survey generated with summary stats."));
+
   if (aiResult.summary) {
     console.log(chalk.cyan("\n📝 Summary:"));
     console.log(chalk.white(`  ${aiResult.summary}`));

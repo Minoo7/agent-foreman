@@ -21,8 +21,8 @@ const TDD_PROMPT_TIMEOUT_MS = 10000; // 10 seconds
  * Default is "recommended" (tests suggested but not required)
  */
 async function promptTDDMode(): Promise<TDDMode | undefined> {
-  // If not a TTY, skip prompt and use recommended default
-  if (!process.stdin.isTTY) {
+  // If not interactive (or running under OpenCode), skip prompt
+  if (!process.stdin.isTTY || process.env.OPENCODE === "1" || process.env.AGENT_FOREMAN_PLAIN === "true") {
     return "recommended";
   }
 

@@ -203,6 +203,7 @@ export async function aiScanProject(
   let spinnerInterval: NodeJS.Timeout | null = null;
 
   if (isTTY()) {
+    // Interactive terminal: show spinner animation
     process.stdout.write(chalk.gray(`  [2/2] Exploring with ${agentName}...`));
     spinnerInterval = setInterval(() => {
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
@@ -216,7 +217,7 @@ export async function aiScanProject(
       spinnerIdx = (spinnerIdx + 1) % spinnerFrames.length;
     }, 100);
   } else {
-    // Plain / non-TTY mode: avoid spinners and cursor manipulation
+    // OpenCode / non-TTY mode: avoid partial line updates
     console.log(chalk.gray(`  [2/2] Exploring with ${agentName}...`));
   }
 

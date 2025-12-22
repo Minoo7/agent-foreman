@@ -57,6 +57,11 @@ export async function detectProjectGoal(cwd: string): Promise<string> {
  * Prompt user for yes/no confirmation
  */
 export async function promptConfirmation(message: string): Promise<boolean> {
+  // In non-interactive environments (like OpenCode tools), default to "no".
+  if (!process.stdin.isTTY || process.env.OPENCODE === "1" || process.env.AGENT_FOREMAN_PLAIN === "true") {
+    return false;
+  }
+
   const readline = await import("node:readline");
   const rl = readline.createInterface({
     input: process.stdin,

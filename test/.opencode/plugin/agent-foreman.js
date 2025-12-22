@@ -11,12 +11,57 @@ import { tool } from "@opencode-ai/plugin";
 export const AgentForemanPlugin = async ({ $, directory, worktree }) => {
   const cwd = worktree || directory;
 
+  const ensurePlainArgs = (args) => {
+    const list = Array.isArray(args) ? [...args] : [args];
+
+    // Force non-interactive, non-TTY output for OpenCode.
+    if (!list.includes("--plain")) list.push("--plain");
+
+    return list;
+  };
+
+  const stripAnsiAndControl = (input) => {
+    if (!input) return "";
+
+    let text = String(input);
+
+    // OSC (Operating System Command) sequences: ESC ] ... BEL or ESC \
+    text = text.replace(/\u001B\][^\u0007]*(?:\u0007|\u001B\\)/g, "");
+
+    // CSI + other ANSI escape sequences.
+    // Adapted from commonly-used "strip-ansi" patterns.
+    text = text.replace(
+      /[\u001B\u009B][[\]()#;?]*(?:(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><~]|(?:[a-zA-Z\d]*(?:;[a-zA-Z\d]*)*)?\u0007)/g,
+      ""
+    );
+
+    // Drop remaining control chars that can confuse renderers.
+    // Keep: \n, \r, \t
+    text = text.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, "");
+
+    return text;
+  };
+
   const runForeman = async (args) => {
-    const cmd = $`agent-foreman ${args}`.cwd(cwd).nothrow();
+    const finalArgs = ensurePlainArgs(args);
+
+    const plainEnv = {
+      AGENT_FOREMAN_PLAIN: "true",
+      OPENCODE: "1",
+      NO_COLOR: "1",
+      CLICOLOR: "0",
+      FORCE_COLOR: "0",
+      TERM: "dumb",
+    };
+
+    // Prefer setting env via the runner API (avoids shell assumptions).
+    const base = $`agent-foreman ${finalArgs}`.cwd(cwd).nothrow();
+    const cmd = typeof base.env === "function" ? base.env(plainEnv) : base;
+
     const result = await cmd;
 
-    const stdout = (result.stdout ?? "").toString();
-    const stderr = (result.stderr ?? "").toString();
+    const stdout = stripAnsiAndControl((result.stdout ?? "").toString());
+    const stderr = stripAnsiAndControl((result.stderr ?? "").toString());
     const exitCode = Number(result.exitCode ?? 0);
 
     const parts = [];

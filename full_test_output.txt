@@ -1,0 +1,1936 @@
+
+> agent-foreman@0.1.113 test
+> vitest run
+
+
+[1m[46m RUN [49m[22m [36mv4.0.14 [39m[90m/Users/minoo/projects/coding/others/agent-foreman-port/agent-foreman-skill-convert-opencode[39m
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner[2m > [22m[2mshould stop without error
+[22m[39mLoading...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner[2m > [22m[2mshould succeed without error
+[22m[39mLoading...
+✓ Done! (0s)
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner[2m > [22m[2mshould fail without error
+[22m[39mLoading...
+✗ Error! (0s)
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner[2m > [22m[2mshould warn without error
+[22m[39mLoading...
+⚠ Warning! (0s)
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner[2m > [22m[2mshould update message without error
+[22m[39mLoading...
+Processing...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner[2m > [22m[2mshould handle multiple stops gracefully
+[22m[39mLoading...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner[2m > [22m[2mshould not start when already stopped
+[22m[39mLoading...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould start without error
+[22m[39m   [0/10] 0% - Processing
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould update without error
+[22m[39m   [0/10] 0% - Processing
+   [5/10] 50% - Processing
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould update with message without error
+[22m[39m   [0/10] 0% - Processing
+   [5/10] 50% - Halfway
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould increment without error
+[22m[39m   [0/10] 0% - Processing
+   [1/10] 10% - Processing
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould increment with message without error
+[22m[39m   [0/10] 0% - Processing
+   [1/10] 10% - Step 1
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould complete without error
+[22m[39m   [0/10] 0% - Processing
+   [10/10] 100% - Processing ✓
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould complete with message without error
+[22m[39m   [0/10] 0% - Processing
+   [10/10] 100% - All done ✓
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mProgressBar[2m > [22m[2mshould handle progress over 100% gracefully
+[22m[39m   [0/10] 0% - Processing
+   [15/10] 100% - Processing
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould start without error
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould track current step index
+[22m[39m
+   Verification steps: 3
+   1. Step 1
+   2. Step 2
+   3. Step 3
+
+   [1/3] Step 1...
+   [2/3] Step 2...
+   [3/3] Step 3...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould complete step with success
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould complete step with failure
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould warn step without error
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould complete without error
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould handle empty steps array
+[22m[39m
+   Verification steps: 0
+
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress[2m > [22m[2mshould handle single step
+[22m[39m
+   Verification steps: 1
+   1. Only step
+
+   [1/1] Only step...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mfactory functions[2m > [22m[2mcreateSpinner should create and start a spinner
+[22m[39mTest...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2melapsed time formatting[2m > [22m[2mshould handle time progression without errors
+[22m[39mLoading...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2melapsed time formatting[2m > [22m[2mshould handle longer time periods
+[22m[39mLoading...
+✓ Done (2m 0s)
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mSpinner edge cases[2m > [22m[2mshould clear interval on stop even when called multiple times
+[22m[39mTest...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress edge cases[2m > [22m[2mshould handle startStep with out of bounds index
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress edge cases[2m > [22m[2mshould not advance past last step on completeStep
+[22m[39m
+   Verification steps: 1
+   1. Only step
+
+   [1/1] Only step...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress edge cases[2m > [22m[2mshould handle warnStep on last step
+[22m[39m
+   Verification steps: 1
+   1. Only step
+
+   [1/1] Only step...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress edge cases[2m > [22m[2mshould handle completeStep with failure advancing to next
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress edge cases[2m > [22m[2mshould not advance past total steps when completeStep is called at last step
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mStepProgress edge cases[2m > [22m[2mshould handle default success value in completeStep
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mTTY mode coverage - Spinner render()[2m > [22m[2mshould render spinner frames in TTY mode
+[22m[39mLoading data...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mTTY mode coverage - Spinner render()[2m > [22m[2mshould update spinner message in TTY mode
+[22m[39mInitial...
+Updated message...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mTTY mode coverage - Spinner render()[2m > [22m[2mshould render with time format in TTY mode
+[22m[39mLong task...
+✓ Completed (1m 5s)
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mTTY mode coverage - StepProgress[2m > [22m[2mshould use Spinner in TTY mode and call succeed on completeStep(true)
+[22m[39m
+   Verification steps: 3
+   1. Step 1
+   2. Step 2
+   3. Step 3
+
+   [1/3] Step 1...
+   [2/3] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mTTY mode coverage - StepProgress[2m > [22m[2mshould call fail on completeStep(false) in TTY mode
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mTTY mode coverage - StepProgress[2m > [22m[2mshould call warn on warnStep() in TTY mode
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+   [2/2] Step 2...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mTTY mode coverage - StepProgress[2m > [22m[2mshould call stop on complete() in TTY mode
+[22m[39m
+   Verification steps: 2
+   1. Step 1
+   2. Step 2
+
+   [1/2] Step 1...
+
+[90mstdout[2m | tests/progress.test.ts[2m > [22m[2mprogress indicators[2m > [22m[2mEdge cases for Spinner stopped state[2m > [22m[2mshould not render if stopped
+[22m[39mTest...
+
+ [31m❯[39m tests/progress.test.ts [2m([22m[2m78 tests[22m[2m | [22m[31m9 failed[39m[2m)[22m[32m 76[2mms[22m[39m
+       [32m✓[39m should return a boolean[32m 0[2mms[22m[39m
+       [32m✓[39m should create a spinner instance[32m 1[2mms[22m[39m
+       [32m✓[39m should stop without error[32m 1[2mms[22m[39m
+       [32m✓[39m should succeed without error[32m 0[2mms[22m[39m
+       [32m✓[39m should fail without error[32m 0[2mms[22m[39m
+       [32m✓[39m should warn without error[32m 0[2mms[22m[39m
+       [32m✓[39m should update message without error[32m 0[2mms[22m[39m
+       [32m✓[39m should handle multiple stops gracefully[32m 0[2mms[22m[39m
+       [32m✓[39m should not start when already stopped[32m 0[2mms[22m[39m
+       [32m✓[39m should create a progress bar instance[32m 0[2mms[22m[39m
+       [32m✓[39m should start without error[32m 0[2mms[22m[39m
+       [32m✓[39m should update without error[32m 0[2mms[22m[39m
+       [32m✓[39m should update with message without error[32m 0[2mms[22m[39m
+       [32m✓[39m should increment without error[32m 0[2mms[22m[39m
+       [32m✓[39m should increment with message without error[32m 0[2mms[22m[39m
+       [32m✓[39m should complete without error[32m 0[2mms[22m[39m
+       [32m✓[39m should complete with message without error[32m 0[2mms[22m[39m
+       [32m✓[39m should handle progress over 100% gracefully[32m 0[2mms[22m[39m
+       [32m✓[39m should accept custom width[32m 0[2mms[22m[39m
+       [32m✓[39m should create a step progress instance[32m 0[2mms[22m[39m
+       [32m✓[39m should start without error[32m 0[2mms[22m[39m
+       [32m✓[39m should track current step index[32m 0[2mms[22m[39m
+       [32m✓[39m should complete step with success[32m 0[2mms[22m[39m
+       [32m✓[39m should complete step with failure[32m 0[2mms[22m[39m
+       [32m✓[39m should warn step without error[32m 0[2mms[22m[39m
+       [32m✓[39m should complete without error[32m 1[2mms[22m[39m
+       [32m✓[39m should handle empty steps array[32m 1[2mms[22m[39m
+       [32m✓[39m should handle single step[32m 1[2mms[22m[39m
+       [32m✓[39m createSpinner should create and start a spinner[32m 1[2mms[22m[39m
+       [32m✓[39m createProgressBar should create a progress bar[32m 0[2mms[22m[39m
+       [32m✓[39m createProgressBar should accept custom width[32m 0[2mms[22m[39m
+       [32m✓[39m createStepProgress should create step progress[32m 0[2mms[22m[39m
+       [32m✓[39m should handle time progression without errors[32m 0[2mms[22m[39m
+       [32m✓[39m should handle longer time periods[32m 0[2mms[22m[39m
+       [32m✓[39m spinner in non-TTY mode outputs simple message with ellipsis[32m 0[2mms[22m[39m
+       [32m✓[39m progress bar shows step count in format [current/total][32m 0[2mms[22m[39m
+       [32m✓[39m step progress shows step X/Y format[32m 0[2mms[22m[39m
+       [32m✓[39m spinner succeed shows checkmark character[32m 0[2mms[22m[39m
+       [32m✓[39m spinner fail shows X character[32m 0[2mms[22m[39m
+       [32m✓[39m spinner warn shows warning character[32m 0[2mms[22m[39m
+       [32m✓[39m progress bar complete shows 100% and checkmark[32m 0[2mms[22m[39m
+       [32m✓[39m spinner output includes elapsed time format[32m 0[2mms[22m[39m
+       [32m✓[39m should use default message in succeed when none provided[32m 0[2mms[22m[39m
+       [32m✓[39m should use default message in fail when none provided[32m 0[2mms[22m[39m
+       [32m✓[39m should use default message in warn when none provided[32m 0[2mms[22m[39m
+       [32m✓[39m should format time as minutes and seconds for long operations[32m 0[2mms[22m[39m
+       [32m✓[39m should clear interval on stop even when called multiple times[32m 0[2mms[22m[39m
+       [32m✓[39m should handle zero total without crashing[32m 0[2mms[22m[39m
+       [32m✓[39m should cap progress at 100%[32m 0[2mms[22m[39m
+       [32m✓[39m should use default message when completing without message[32m 0[2mms[22m[39m
+       [32m✓[39m should handle startStep with out of bounds index[32m 0[2mms[22m[39m
+       [32m✓[39m should not advance past last step on completeStep[32m 0[2mms[22m[39m
+       [32m✓[39m should handle warnStep advancing to next step[32m 0[2mms[22m[39m
+       [32m✓[39m should handle warnStep on last step[32m 0[2mms[22m[39m
+       [32m✓[39m should handle complete when no spinner exists[32m 0[2mms[22m[39m
+       [32m✓[39m should handle completeStep with failure advancing to next[32m 0[2mms[22m[39m
+       [32m✓[39m should show overview and steps in non-TTY mode[32m 0[2mms[22m[39m
+       [32m✓[39m should not advance past total steps when completeStep is called at last step[32m 0[2mms[22m[39m
+       [32m✓[39m should handle completeStep when stepSpinner is null[32m 0[2mms[22m[39m
+       [32m✓[39m should call spinner succeed on completeStep with success=true[32m 0[2mms[22m[39m
+       [32m✓[39m should call spinner fail on completeStep with success=false[32m 0[2mms[22m[39m
+       [32m✓[39m should call spinner warn on warnStep[32m 0[2mms[22m[39m
+       [32m✓[39m should call spinner stop on complete when spinner exists[32m 0[2mms[22m[39m
+       [32m✓[39m should handle warnStep when stepSpinner is null[32m 0[2mms[22m[39m
+       [32m✓[39m should not start step when startStep is called with out of bounds index[32m 0[2mms[22m[39m
+       [32m✓[39m should handle default success value in completeStep[32m 2[2mms[22m[39m
+[31m       [31m×[31m should render spinner frames in TTY mode[39m[32m 4[2mms[22m[39m
+       [32m✓[39m should update spinner message in TTY mode[32m 0[2mms[22m[39m
+[31m       [31m×[31m should render with time format in TTY mode[39m[32m 1[2mms[22m[39m
+[31m       [31m×[31m should use Spinner in TTY mode and call succeed on completeStep(true)[39m[32m 1[2mms[22m[39m
+[31m       [31m×[31m should call fail on completeStep(false) in TTY mode[39m[32m 0[2mms[22m[39m
+[31m       [31m×[31m should call warn on warnStep() in TTY mode[39m[32m 0[2mms[22m[39m
+[31m       [31m×[31m should call stop on complete() in TTY mode[39m[32m 1[2mms[22m[39m
+[31m       [31m×[31m should not show overview in TTY mode[39m[32m 1[2mms[22m[39m
+[31m       [31m×[31m should render progress bar to stdout.write in TTY mode[39m[32m 0[2mms[22m[39m
+[31m       [31m×[31m should show percentage in TTY mode[39m[32m 0[2mms[22m[39m
+       [32m✓[39m should not start if already stopped[32m 0[2mms[22m[39m
+       [32m✓[39m should not render if stopped[32m 0[2mms[22m[39m
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache returns cached capabilities within TTL[2m > [22m[2mreturns memory-cached capabilities on second call
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache returns cached capabilities within TTL[2m > [22m[2mreturns memory-cached capabilities on second call
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mCapability Cache[2m > [22m[2mloadCachedCapabilities[2m > [22m[2mshould return null when cache version does not match
+[22m[39mCache version mismatch (0.0.0 vs 1.0.0), invalidating...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould run test command when hasTests is true
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould run test command when hasTests is true
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould run all check types
+[22m[39m   [0/4] 0% - Running automated checks
+   [0/4] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould run all check types
+[22m[39m   [1/4] 25% - Running type check
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould run all check types
+[22m[39m   [2/4] 50% - Running linter
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould run all check types
+[22m[39m   [3/4] 75% - Running build
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould run all check types
+[22m[39m   [4/4] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould handle check failures
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould handle check failures
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstderr[2m | tests/capability.test.ts[2m > [22m[2mCapability Cache[2m > [22m[2mloadCachedCapabilities[2m > [22m[2mshould return null when cache file is corrupted
+[22m[39mFailed to parse capability cache: Unexpected token 'o', "not valid json" is not valid JSON
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould track duration
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks[2m > [22m[2mshould track duration
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache returns cached capabilities within TTL[2m > [22m[2mlogs memory cache usage in verbose mode
+[22m[39m  Using AI-based capability discovery...
+  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache returns cached capabilities within TTL[2m > [22m[2mlogs memory cache usage in verbose mode
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache returns cached capabilities within TTL[2m > [22m[2mlogs memory cache usage in verbose mode
+[22m[39m  Using memory-cached capabilities
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould return capabilities from AI response
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould return capabilities from AI response
+[22m[39m  Discovered capabilities for: typescript, nodejs
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould return minimal capabilities when AI fails
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould return minimal capabilities when AI fails
+[22m[39m  AI discovery failed: AI unavailable
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould return minimal capabilities when AI response is invalid
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould return minimal capabilities when AI response is invalid
+[22m[39m  Failed to parse AI response: Failed to parse JSON: Unexpected token 'o', "not valid json" is not valid JSON
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould include custom rules when provided by AI
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould include custom rules when provided by AI
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould detect E2E capabilities when Playwright is present
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache expires after TTL[2m > [22m[2mrefreshes cache after TTL expires
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould detect E2E capabilities when Playwright is present
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould set e2eInfo.available to false when E2E not present
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache expires after TTL[2m > [22m[2mrefreshes cache after TTL expires
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould set e2eInfo.available to false when E2E not present
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould include E2E confidence in average confidence calculation
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache expires after TTL[2m > [22m[2mrefreshes cache after TTL expires
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mAI Capability Discovery[2m > [22m[2mdiscoverCapabilitiesWithAI[2m > [22m[2mshould include E2E confidence in average confidence calculation
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache expires after TTL[2m > [22m[2mrefreshes cache after TTL expires
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould use cache when available and not stale
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould use cache when available and not stale
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould skip cache when force is true
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould skip cache when force is true
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould skip cache when force is true
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould skip cache when force is true
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould use AI when no cache exists
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache is project-specific (cwd-based)[2m > [22m[2mdifferent projects have separate caches
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectCapabilities[2m > [22m[2mshould use AI when no cache exists
+[22m[39m  Discovered capabilities for: go
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache is project-specific (cwd-based)[2m > [22m[2mdifferent projects have separate caches
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache is project-specific (cwd-based)[2m > [22m[2mdifferent projects have separate caches
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectVerificationCapabilities (legacy)[2m > [22m[2mshould return legacy format from AI detection
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache is project-specific (cwd-based)[2m > [22m[2mdifferent projects have separate caches
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/capability.test.ts[2m > [22m[2mTwo-Tier Detection System[2m > [22m[2mdetectVerificationCapabilities (legacy)[2m > [22m[2mshould return legacy format from AI detection
+[22m[39m  Discovered capabilities for: rust
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mclearCapabilitiesCache clears memory cache[2m > [22m[2mclears memory cache forcing fresh detection
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mclearCapabilitiesCache clears memory cache[2m > [22m[2mclears memory cache forcing fresh detection
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mclearCapabilitiesCache clears memory cache[2m > [22m[2mclears memory cache forcing fresh detection
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mclearCapabilitiesCache clears memory cache[2m > [22m[2mclears memory cache forcing fresh detection
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mforce option bypasses memory cache[2m > [22m[2mforce option always re-detects
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mforce option bypasses memory cache[2m > [22m[2mforce option always re-detects
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mforce option bypasses memory cache[2m > [22m[2mforce option always re-detects
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mforce option bypasses memory cache[2m > [22m[2mforce option always re-detects
+[22m[39m  Discovered capabilities for: typescript
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache structure[2m > [22m[2mcaches capabilities correctly
+[22m[39m  AI exploring project structure...
+
+[90mstdout[2m | tests/optimization/memory-cache.test.ts[2m > [22m[2mMemory Cache Optimization[2m > [22m[2mMemory cache structure[2m > [22m[2mcaches capabilities correctly
+[22m[39m  Discovered capabilities for: typescript
+
+ [32m✓[39m tests/optimization/memory-cache.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 1037[2mms[22m[39m
+ [32m✓[39m tests/capability.test.ts [2m([22m[2m51 tests[22m[2m)[22m[33m 928[2mms[22m[39m
+[90mstderr[2m | tests/verification.test.ts[2m > [22m[2mVerification Store[2m > [22m[2mloadVerificationStore[2m > [22m[2mshould handle corrupted store gracefully
+[22m[39m[verification-store] Error loading store: SyntaxError: Expected property name or '}' in JSON at position 2 (line 1 column 3), returning empty store
+
+[90mstderr[2m | tests/verification.test.ts[2m > [22m[2mVerification Store[2m > [22m[2mloadVerificationStore - corrupted results field[2m > [22m[2mshould handle store with invalid results field
+[22m[39m[verification-store] Corrupted store file, returning empty store
+
+[90mstderr[2m | tests/verification.test.ts[2m > [22m[2mVerification Prompts[2m > [22m[2mparseVerificationResponse[2m > [22m[2mshould handle malformed response gracefully
+[22m[39m[verification-prompts] No JSON found in response
+
+[90mstdout[2m | tests/verification.test.ts[2m > [22m[2mVerification Store Migration[2m > [22m[2mAuto-migration on first access[2m > [22m[2mshould auto-migrate when loading index with legacy store
+[22m[39m[verification-store] Auto-migrated 1 verification results to v3.0.0 format
+
+[90mstdout[2m | tests/verification.test.ts[2m > [22m[2mVerification Store Migration[2m > [22m[2mautoMigrateIfNeeded[2m > [22m[2mshould migrate when old format exists
+[22m[39m[verification-store] Migrated 1 verification results to new format
+
+[90mstderr[2m | tests/verification.test.ts[2m > [22m[2mVerification Store Migration[2m > [22m[2mautoMigrateIfNeeded[2m > [22m[2mshould handle migration errors gracefully
+[22m[39m[verification-store] Error loading store: SyntaxError: Expected property name or '}' in JSON at position 2 (line 1 column 3), returning empty store
+
+ [32m✓[39m tests/verification.test.ts [2m([22m[2m99 tests[22m[2m)[22m[33m 385[2mms[22m[39m
+ [32m✓[39m tests/project-scanner.test.ts [2m([22m[2m35 tests[22m[2m)[22m[33m 424[2mms[22m[39m
+ [32m✓[39m tests/feature-list.test.ts [2m([22m[2m81 tests[22m[2m)[22m[33m 565[2mms[22m[39m
+ [31m❯[39m tests/plugin-installer.test.ts [2m([22m[2m29 tests[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 189[2mms[22m[39m
+     [32m✓[39m should export checkAndInstallPlugins function[32m 34[2mms[22m[39m
+     [32m✓[39m should skip installation when not in compiled mode[32m 1[2mms[22m[39m
+     [32m✓[39m should detect non-compiled mode when EMBEDDED_PLUGINS is empty[32m 1[2mms[22m[39m
+     [32m✓[39m should handle missing version file gracefully[32m 0[2mms[22m[39m
+     [32m✓[39m should skip installation in CI environment[32m 0[2mms[22m[39m
+     [32m✓[39m should skip installation when NO_PLUGIN_UPDATE is set[32m 0[2mms[22m[39m
+     [32m✓[39m should handle installation errors gracefully[32m 1[2mms[22m[39m
+     [32m✓[39m should be safe to call multiple times[32m 0[2mms[22m[39m
+     [32m✓[39m should work in non-TTY environment[32m 1[2mms[22m[39m
+     [32m✓[39m isCompiledBinary should return a boolean[32m 0[2mms[22m[39m
+     [32m✓[39m should export isMarketplaceRegistered function[32m 0[2mms[22m[39m
+     [32m✓[39m should export isPluginInstalled function[32m 0[2mms[22m[39m
+     [32m✓[39m should export isPluginEnabled function[32m 0[2mms[22m[39m
+     [32m✓[39m getPluginInstallInfo should return correct structure[32m 0[2mms[22m[39m
+     [32m✓[39m should export fullInstall function[32m 0[2mms[22m[39m
+     [32m✓[39m should export fullUninstall function[32m 0[2mms[22m[39m
+     [32m✓[39m fullUninstall should handle missing files gracefully[32m 1[2mms[22m[39m
+     [32m✓[39m should execute fullInstall without throwing[32m 10[2mms[22m[39m
+     [32m✓[39m should be idempotent - calling fullInstall twice should not throw[32m 13[2mms[22m[39m
+     [32m✓[39m fullUninstall should clean up all installed files[32m 10[2mms[22m[39m
+     [32m✓[39m should skip when marketplace already registered[32m 12[2mms[22m[39m
+     [32m✓[39m isMarketplaceRegistered should return falsy when not registered[32m 0[2mms[22m[39m
+     [32m✓[39m isPluginInstalled should return falsy when not installed[32m 0[2mms[22m[39m
+     [32m✓[39m isPluginEnabled should return falsy when not enabled[32m 0[2mms[22m[39m
+     [32m✓[39m getPluginInstallInfo should return structure with falsy values after uninstall[32m 0[2mms[22m[39m
+     [32m✓[39m should handle plugin update when marketplace already registered[32m 13[2mms[22m[39m
+[31m     [31m×[31m should handle version comparison when installed version exists[39m[32m 13[2mms[22m[39m
+     [32m✓[39m should use bundledVersion for comparison[32m 9[2mms[22m[39m
+     [32m✓[39m should not update when installed version matches bundled[32m 14[2mms[22m[39m
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould pass cwd option to agent
+[22m[39m        Using gemini...
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould pass cwd option to agent
+[22m[39m        Using gemini... ✓ (0.0s)
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould return agentUsed in result
+[22m[39m        Using claude...
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould return agentUsed in result
+[22m[39m        Using claude... ✓ (0.0s)
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould try agents in preferred order
+[22m[39m        Using codex...
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould try agents in preferred order
+[22m[39m        Using codex... ✓ (0.0s)
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould skip unknown agent names in preferred order
+[22m[39m        Using claude...
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould skip unknown agent names in preferred order
+[22m[39m        Using claude... ✓ (0.0s)
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould try next agent when first fails
+[22m[39m        Using gemini...
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould try next agent when first fails
+[22m[39m        Using gemini... ✗ (0.0s)
+        Using claude...
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould try next agent when first fails
+[22m[39m        Using claude... ✓ (0.0s)
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould show progress output when showProgress is true (default)
+[22m[39m        Using claude...
+
+[90mstdout[2m | tests/agents.test.ts[2m > [22m[2mAgents[2m > [22m[2mcallAnyAvailableAgent[2m > [22m[2mshould show progress output when showProgress is true (default)
+[22m[39m        Using claude... ✓ (0.0s)
+
+ [32m✓[39m tests/agents.test.ts [2m([22m[2m54 tests[22m[2m)[22m[32m 288[2mms[22m[39m
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m  ai/init.sh exists, using AI to merge your customizations...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m✓ Updated ai/init.sh (merged by AI - your customizations preserved)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould use AI merge for init.sh when it exists in merge mode
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould NOT use AI for CLAUDE.md - uses static rules instead
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould NOT use AI for CLAUDE.md - uses static rules instead
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould NOT use AI for CLAUDE.md - uses static rules instead
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould NOT use AI for CLAUDE.md - uses static rules instead
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould NOT use AI for CLAUDE.md - uses static rules instead
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould NOT use AI for CLAUDE.md - uses static rules instead
+[22m[39m✓ Updated CLAUDE.md (added project goal)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mAI merge for init.sh only[2m > [22m[2mshould NOT use AI for CLAUDE.md - uses static rules instead
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create .claude/rules/ directory with all rule files
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create .claude/rules/ directory with all rule files
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create .claude/rules/ directory with all rule files
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create .claude/rules/ directory with all rule files
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create .claude/rules/ directory with all rule files
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create .claude/rules/ directory with all rule files
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create .claude/rules/ directory with all rule files
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create minimal CLAUDE.md with just project goal
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create minimal CLAUDE.md with just project goal
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create minimal CLAUDE.md with just project goal
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create minimal CLAUDE.md with just project goal
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create minimal CLAUDE.md with just project goal
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create minimal CLAUDE.md with just project goal
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould create minimal CLAUDE.md with just project goal
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould skip existing rule files in merge mode
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould skip existing rule files in merge mode
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould skip existing rule files in merge mode
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould skip existing rule files in merge mode
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould skip existing rule files in merge mode
+[22m[39m✓ Created 6 rule files in .claude/rules/
+  Skipped 1 existing rule files (use --force to overwrite)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould skip existing rule files in merge mode
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould skip existing rule files in merge mode
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould overwrite rule files in new mode (force)
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould overwrite rule files in new mode (force)
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould overwrite rule files in new mode (force)
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould overwrite rule files in new mode (force)
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould overwrite rule files in new mode (force)
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould overwrite rule files in new mode (force)
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mStatic rules file generation[2m > [22m[2mshould overwrite rule files in new mode (force)
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m  CLAUDE.md already has harness section (legacy), rules loaded from .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould add project goal to CLAUDE.md if missing
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould add project goal to CLAUDE.md if missing
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould add project goal to CLAUDE.md if missing
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould add project goal to CLAUDE.md if missing
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould add project goal to CLAUDE.md if missing
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould add project goal to CLAUDE.md if missing
+[22m[39m✓ Updated CLAUDE.md (added project goal)
+
+[90mstdout[2m | tests/integration/init-merge.test.ts[2m > [22m[2mInit Harness Files Generation[2m > [22m[2mLegacy CLAUDE.md handling[2m > [22m[2mshould add project goal to CLAUDE.md if missing
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+ [32m✓[39m tests/integration/init-merge.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 89[2mms[22m[39m
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (new mode)
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (new mode)
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (new mode)
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (new mode)
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (new mode)
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (new mode)
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (new mode)
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (merge mode)
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (merge mode)
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (merge mode)
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (merge mode)
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (merge mode)
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (merge mode)
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould create new init.sh when none exists (merge mode)
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m  ai/init.sh exists, using AI to merge your customizations...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m✓ Updated ai/init.sh (merged by AI - your customizations preserved)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould use AI to merge init.sh in merge mode when existing script exists
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m  ai/init.sh exists, using AI to merge your customizations...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m  AI merge failed, keeping your existing ai/init.sh unchanged
+  (Run with --mode new to force regeneration)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould keep existing init.sh unchanged when AI merge fails completely
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m  ai/init.sh exists, using AI to merge your customizations...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m  AI merge output doesn't look like a valid bash script, falling back...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould fallback to new template when AI returns invalid bash script
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould generate minimal init.sh when no commands detected
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould generate minimal init.sh when no commands detected
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould generate minimal init.sh when no commands detected
+[22m[39m✓ Generated .gitignore
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould generate minimal init.sh when no commands detected
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould generate minimal init.sh when no commands detected
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould generate minimal init.sh when no commands detected
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould generate minimal init.sh when no commands detected
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould overwrite init.sh in new mode even when existing
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould overwrite init.sh in new mode even when existing
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould overwrite init.sh in new mode even when existing
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould overwrite init.sh in new mode even when existing
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould overwrite init.sh in new mode even when existing
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould overwrite init.sh in new mode even when existing
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould overwrite init.sh in new mode even when existing
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould not write progress.log in scan mode
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould not write progress.log in scan mode
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould not write progress.log in scan mode
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould not write progress.log in scan mode
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - init.sh generation[2m > [22m[2mshould not write progress.log in scan mode
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create new minimal CLAUDE.md when none exists
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create new minimal CLAUDE.md when none exists
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create new minimal CLAUDE.md when none exists
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create new minimal CLAUDE.md when none exists
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create new minimal CLAUDE.md when none exists
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create new minimal CLAUDE.md when none exists
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create new minimal CLAUDE.md when none exists
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create .claude/rules/ with rule files
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create .claude/rules/ with rule files
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create .claude/rules/ with rule files
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create .claude/rules/ with rule files
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create .claude/rules/ with rule files
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create .claude/rules/ with rule files
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create .claude/rules/ with rule files
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m✓ Created 7 rule files in .opencode/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m✓ Generated AGENTS.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m✓ Updated opencode.json with rule instructions
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould create OpenCode artifacts when agent is opencode
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md and add project goal if missing
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md and add project goal if missing
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md and add project goal if missing
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md and add project goal if missing
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md and add project goal if missing
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md and add project goal if missing
+[22m[39m✓ Updated CLAUDE.md (added project goal)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md and add project goal if missing
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m  CLAUDE.md already has harness section (legacy), rules loaded from .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - CLAUDE.md generation[2m > [22m[2mshould preserve existing CLAUDE.md with harness section (legacy)
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in new mode
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in new mode
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in new mode
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in new mode
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in new mode
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in new mode
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in new mode
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+ [32m✓[39m tests/integration/fail-tdd-commands.test.ts [2m([22m[2m17 tests[22m[2m)[22m[33m 3565[2mms[22m[39m
+     [33m[2m✓[22m[39m should update progress log [33m 391[2mms[22m[39m
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in merge mode
+[22m[39m  Detecting project capabilities...
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in merge mode
+[22m[39m✓ Capabilities detected and cached
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in merge mode
+[22m[39m✓ Generated .gitignore (using Node templates)
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in merge mode
+[22m[39m✓ Generated ai/init.sh
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in merge mode
+[22m[39m✓ Created 7 rule files in .claude/rules/
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in merge mode
+[22m[39m✓ Generated CLAUDE.md
+
+[90mstdout[2m | tests/init-helpers.test.ts[2m > [22m[2mInit Helpers[2m > [22m[2mgenerateHarnessFiles - progress.log[2m > [22m[2mshould append INIT entry to progress.log in merge mode
+[22m[39m✓ Updated ai/progress.log
+
+📝 Suggested git commit:
+   git add ai/ .claude/ CLAUDE.md docs/ && git commit -m "chore: initialize agent-foreman harness"
+
+ [32m✓[39m tests/git-utils.test.ts [2m([22m[2m43 tests[22m[2m)[22m[33m 3550[2mms[22m[39m
+ [32m✓[39m tests/init-helpers.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 109[2mms[22m[39m
+[90mstdout[2m | tests/upgrade.test.ts[2m > [22m[2mUpgrade Utils[2m > [22m[2minteractiveUpgradeCheck[2m > [22m[2mshould skip prompt in non-TTY mode
+[22m[39m
+⬆ New version available: v0.1.113 → v999.0.0
+
+[90mstdout[2m | tests/upgrade.test.ts[2m > [22m[2mUpgrade Utils[2m > [22m[2minteractiveUpgradeCheck[2m > [22m[2mshould skip prompt in non-TTY mode
+[22m[39m  Skipping upgrade. Manual upgrade: npm install -g agent-foreman@latest
+
+
+[90mstdout[2m | tests/upgrade.test.ts[2m > [22m[2mUpgrade Utils[2m > [22m[2mperformInteractiveUpgrade[2m > [22m[2mshould return success when npm install succeeds
+[22m[39m
+📦 Upgrading agent-foreman...
+  Installing latest npm package...
+  ✓ npm package updated
+
+[90mstdout[2m | tests/upgrade.test.ts[2m > [22m[2mUpgrade Utils[2m > [22m[2mperformInteractiveUpgrade[2m > [22m[2mshould return success when npm install succeeds
+[22m[39m
+✓ Upgraded from v1.0.0 to v2.0.0
+
+[90mstdout[2m | tests/upgrade.test.ts[2m > [22m[2mUpgrade Utils[2m > [22m[2mperformInteractiveUpgrade[2m > [22m[2mshould return error when npm install fails
+[22m[39m
+📦 Upgrading agent-foreman...
+  Installing latest npm package...
+
+ [32m✓[39m tests/test-gate.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 85[2mms[22m[39m
+ [32m✓[39m tests/upgrade.test.ts [2m([22m[2m58 tests[22m[2m)[22m[32m 67[2mms[22m[39m
+ [32m✓[39m tests/progress-log.test.ts [2m([22m[2m27 tests[22m[2m)[22m[32m 66[2mms[22m[39m
+ [32m✓[39m tests/integration/parallel-context.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 84[2mms[22m[39m
+ [32m✓[39m tests/schema.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 78[2mms[22m[39m
+ [32m✓[39m tests/rules.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 116[2mms[22m[39m
+[90mstdout[2m | tests/optimization/parallel-checks.test.ts[2m > [22m[2mParallel Checks Optimization[2m > [22m[2mrunChecksInParallel[2m > [22m[2mskips E2E tests when unit tests fail
+[22m[39m   Running 1 checks in parallel...
+
+[90mstdout[2m | tests/optimization/parallel-checks.test.ts[2m > [22m[2mParallel Checks Optimization[2m > [22m[2mrunChecksInParallel[2m > [22m[2mskips E2E tests when unit tests fail
+[22m[39m   tests: failed
+   Skipping E2E tests (unit tests failed)
+
+ [32m✓[39m tests/optimization/parallel-context.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 86[2mms[22m[39m
+ [32m✓[39m tests/optimization/parallel-checks.test.ts [2m([22m[2m12 tests[22m[2m)[22m[32m 82[2mms[22m[39m
+ [32m✓[39m tests/file-utils.test.ts [2m([22m[2m25 tests[22m[2m)[22m[32m 201[2mms[22m[39m
+ [32m✓[39m tests/verifier/layered-check.test.ts [2m([22m[2m31 tests[22m[2m)[22m[32m 67[2mms[22m[39m
+ [32m✓[39m tests/timeout-config.test.ts [2m([22m[2m62 tests[22m[2m | [22m[33m3 skipped[39m[2m)[22m[32m 65[2mms[22m[39m
+ [32m✓[39m tests/binary-upgrade.test.ts [2m([22m[2m46 tests[22m[2m)[22m[32m 59[2mms[22m[39m
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromSurvey[2m > [22m[2mshould generate features from survey content
+[22m[39m  Generating features from survey...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromSurvey[2m > [22m[2mshould return error when agent call fails
+[22m[39m  Generating features from survey...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromSurvey[2m > [22m[2mshould handle malformed JSON response
+[22m[39m  Generating features from survey...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromSurvey[2m > [22m[2mshould extract JSON from markdown code blocks
+[22m[39m  Generating features from survey...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromGoal[2m > [22m[2mshould generate features from goal description
+[22m[39m  Generating features from goal description...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromGoal[2m > [22m[2mshould return error when agent call fails
+[22m[39m  Generating features from goal description...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromGoal[2m > [22m[2mshould handle empty features in response
+[22m[39m  Generating features from goal description...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2mgenerateFeaturesFromGoal[2m > [22m[2mshould pass correct preferred order to agent
+[22m[39m  Generating features from goal description...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould call agent with project path in prompt
+[22m[39m  [1/2] Preparing autonomous exploration...
+  [2/2] Exploring with Gemini...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould call agent with project path in prompt
+[22m[39m  [2/2] Exploring with Gemini... ✓ (0.0s)
+  [✓] Parsing exploration results...
+  [✓] Parsing exploration results... done
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould pass cwd option to agent for autonomous exploration
+[22m[39m  [1/2] Preparing autonomous exploration...
+  [2/2] Exploring with Gemini...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould pass cwd option to agent for autonomous exploration
+[22m[39m  [2/2] Exploring with Gemini... ✓ (0.0s)
+  [✓] Parsing exploration results...
+  [✓] Parsing exploration results... done
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould return parsed AI analysis result on success
+[22m[39m  [1/2] Preparing autonomous exploration...
+  [2/2] Exploring with Gemini...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould return parsed AI analysis result on success
+[22m[39m  [2/2] Exploring with Gemini... ✓ (0.0s)
+  [✓] Parsing exploration results...
+  [✓] Parsing exploration results... done
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould return error when agent call fails
+[22m[39m  [1/2] Preparing autonomous exploration...
+  [2/2] Exploring with Gemini...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould return error when agent call fails
+[22m[39m  [2/2] Exploring with Gemini... ✗ (0.0s)
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould handle malformed JSON from agent
+[22m[39m  [1/2] Preparing autonomous exploration...
+  [2/2] Exploring with Gemini...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould handle malformed JSON from agent
+[22m[39m  [2/2] Exploring with Gemini... ✓ (0.0s)
+  [✓] Parsing exploration results...
+  [✓] Parsing exploration results... done
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould extract JSON from markdown code blocks
+[22m[39m  [1/2] Preparing autonomous exploration...
+  [2/2] Exploring with Gemini...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould extract JSON from markdown code blocks
+[22m[39m  [2/2] Exploring with Gemini... ✓ (0.0s)
+  [✓] Parsing exploration results...
+  [✓] Parsing exploration results... done
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould include autonomous exploration instructions in prompt
+[22m[39m  [1/2] Preparing autonomous exploration...
+  [2/2] Exploring with Gemini...
+
+[90mstdout[2m | tests/ai-scanner.test.ts[2m > [22m[2mAI Scanner[2m > [22m[2maiScanProject[2m > [22m[2mshould include autonomous exploration instructions in prompt
+[22m[39m  [2/2] Exploring with Gemini... ✓ (0.0s)
+  [✓] Parsing exploration results...
+  [✓] Parsing exploration results... done
+
+ [32m✓[39m tests/gitignore/generator.test.ts [2m([22m[2m60 tests[22m[2m)[22m[32m 71[2mms[22m[39m
+ [32m✓[39m tests/ai-scanner.test.ts [2m([22m[2m36 tests[22m[2m)[22m[32m 63[2mms[22m[39m
+ [32m✓[39m tests/integration/parallel-checks.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m tests/gitignore/bundled-templates.test.ts [2m([22m[2m52 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m tests/impact-analyzer.test.ts [2m([22m[2m31 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m tests/debug.test.ts [2m([22m[2m34 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m tests/test-discovery.test.ts [2m([22m[2m81 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+ [32m✓[39m tests/tdd-ai-generator.test.ts [2m([22m[2m33 tests[22m[2m)[22m[32m 60[2mms[22m[39m
+ [32m✓[39m tests/verifier/task-impact.test.ts [2m([22m[2m28 tests[22m[2m)[22m[32m 61[2mms[22m[39m
+ [32m✓[39m tests/prompts.test.ts [2m([22m[2m26 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+ [32m✓[39m tests/tdd-guidance.test.ts [2m([22m[2m37 tests[22m[2m)[22m[32m 57[2mms[22m[39m
+ [32m✓[39m tests/cli/analyze.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m tests/init-script.test.ts [2m([22m[2m44 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m tests/verifier/git-operations.test.ts [2m([22m[2m8 tests[22m[2m)[22m[32m 54[2mms[22m[39m
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould use selective test command in quick mode
+[22m[39m   [0/2] 0% - Running automated checks
+   [0/2] 0% - Running selective tests (1 files)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould use selective test command in quick mode
+[22m[39m   [1/2] 50% - Running type check
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould use selective test command in quick mode
+[22m[39m   [2/2] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould fall back to full tests when no selective command in quick mode
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould fall back to full tests when no selective command in quick mode
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould skip tests in skip mode
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running type check
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould skip tests in skip mode
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould run full tests in full mode (default)
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould run full tests in full mode (default)
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould handle boolean verbose parameter for backward compatibility
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould handle boolean verbose parameter for backward compatibility
+[22m[39mRunning tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - selective testing[2m > [22m[2mshould handle boolean verbose parameter for backward compatibility
+[22m[39m✓ tests passed (0s)
+   [1/1] 100% - Automated checks complete ✓
+
+ [32m✓[39m tests/gitignore/index.test.ts [2m([22m[2m27 tests[22m[2m)[22m[33m 4496[2mms[22m[39m
+     [33m[2m✓[22m[39m should allow using FetchResult type implicitly [33m 4434[2mms[22m[39m
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould include E2E check when e2eInfo is provided with smoke mode
+[22m[39m   [0/2] 0% - Running automated checks
+   [0/2] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould include E2E check when e2eInfo is provided with smoke mode
+[22m[39m   [1/2] 50% - Running E2E tests (@smoke)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould include E2E check when e2eInfo is provided with smoke mode
+[22m[39m   [2/2] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould run full E2E tests when e2eMode is full
+[22m[39m   [0/2] 0% - Running automated checks
+   [0/2] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould run full E2E tests when e2eMode is full
+[22m[39m   [1/2] 50% - Running E2E tests (full)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould run full E2E tests when e2eMode is full
+[22m[39m   [2/2] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould skip E2E tests when skipE2E is true
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould skip E2E tests when skipE2E is true
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould use e2eTags when provided in tags mode
+[22m[39m   [0/2] 0% - Running automated checks
+   [0/2] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould use e2eTags when provided in tags mode
+[22m[39m   [1/2] 50% - Running E2E tests (@auth, @login)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould use e2eTags when provided in tags mode
+[22m[39m   [2/2] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould handle E2E test failure separately
+[22m[39m   [0/2] 0% - Running automated checks
+   [0/2] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould handle E2E test failure separately
+[22m[39m   [1/2] 50% - Running E2E tests (full)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould handle E2E test failure separately
+[22m[39m   [2/2] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould not include E2E check when e2eInfo is not available
+[22m[39m   [0/1] 0% - Running automated checks
+   [0/1] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould not include E2E check when e2eInfo is not available
+[22m[39m   [1/1] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould use default smoke mode when no e2eMode specified
+[22m[39m   [0/2] 0% - Running automated checks
+   [0/2] 0% - Running tests
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould use default smoke mode when no e2eMode specified
+[22m[39m   [1/2] 50% - Running E2E tests (full)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mrunAutomatedChecks - E2E integration[2m > [22m[2mshould use default smoke mode when no e2eMode specified
+[22m[39m   [2/2] 100% - Automated checks complete ✓
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould return result with verifiedBy='tdd'
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould return result with verifiedBy='tdd'
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould return result with verifiedBy='tdd'
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould return result with verifiedBy='tdd'
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould return result with verifiedBy='tdd'
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould pass when all tests pass
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould pass when all tests pass
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould pass when all tests pass
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould pass when all tests pass
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould pass when all tests pass
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould fail when tests fail
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould fail when tests fail
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould fail when tests fail
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould fail when tests fail
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould fail when tests fail
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests when e2e.required is true and not skipped
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests when e2e.required is true and not skipped
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests when e2e.required is true and not skipped
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests when e2e.required is true and not skipped
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests when e2e.required is true and not skipped
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould skip E2E tests when skipE2E is true
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould skip E2E tests when skipE2E is true
+[22m[39m
+   Verification steps: 3
+   1. Detect capabilities
+   2. Run unit tests
+   3. Save results
+
+   [1/3] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould skip E2E tests when skipE2E is true
+[22m[39m   [2/3] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould skip E2E tests when skipE2E is true
+[22m[39m   [3/3] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould include test files in result
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 2 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould include test files in result
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould include test files in result
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould include test files in result
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould include test files in result
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 1.0 when tests pass
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 1.0 when tests pass
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 1.0 when tests pass
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 1.0 when tests pass
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 1.0 when tests pass
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 0.0 when tests fail
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 0.0 when tests fail
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 0.0 when tests fail
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 0.0 when tests fail
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould have confidence 0.0 when tests fail
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle success
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle success
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle success
+[22m[39m   [2/4] Run unit tests...
+   Test command: npx vitest run tests/foo.test.ts
+Running unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle success
+[22m[39m✓ Unit tests passed (0s)
+   [3/4] Run E2E tests...
+   E2E command: npx playwright test
+Running E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle success
+[22m[39m✓ E2E tests passed (0s)
+   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle failure
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle failure
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle failure
+[22m[39m   [2/4] Run unit tests...
+   Test command: npx vitest run tests/foo.test.ts
+Running unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle failure
+[22m[39m✓ Unit tests passed (0s)
+   [3/4] Run E2E tests...
+   E2E command: npx playwright test
+Running E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests in verbose mode and handle failure
+[22m[39m✗ E2E tests failed (0s)
+   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests with e2eTags when provided
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests with e2eTags when provided
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests with e2eTags when provided
+[22m[39m   [2/4] Run unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests with e2eTags when provided
+[22m[39m   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould run E2E tests with e2eTags when provided
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould show spinner.fail when unit tests fail in verbose mode
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 1 test file(s)
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould show spinner.fail when unit tests fail in verbose mode
+[22m[39m
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run unit tests
+   3. Run E2E tests
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould show spinner.fail when unit tests fail in verbose mode
+[22m[39m   [2/4] Run unit tests...
+   Test command: npx vitest run tests/foo.test.ts
+Running unit tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould show spinner.fail when unit tests fail in verbose mode
+[22m[39m✗ Unit tests failed (0s)
+   [3/4] Run E2E tests...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould show spinner.fail when unit tests fail in verbose mode
+[22m[39m   [4/4] Save results...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould handle no test command available
+[22m[39m
+   Verifying feature (TDD): test.feature
+   Running 0 test file(s)
+   No test files specified, falling back to AI verification
+
+   Verifying feature (autonomous): test.feature
+
+   Verification steps: 4
+   1. Detect capabilities
+   2. Run automated checks
+   3. AI autonomous exploration
+   4. Save results
+
+   [1/4] Detect capabilities...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould handle no test command available
+[22m[39m   [2/4] Run automated checks...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould handle no test command available
+[22m[39m   [3/4] AI autonomous exploration...
+
+   AI Autonomous Exploration:
+AI exploring codebase...
+
+[90mstdout[2m | tests/verifier.test.ts[2m > [22m[2mVerifier[2m > [22m[2mverifyFeatureTDD[2m > [22m[2mshould handle no test command available
+[22m[39m✗ AI exploration failed (permanent error): permanent error (0s)
+
+ [32m✓[39m tests/verifier.test.ts [2m([22m[2m113 tests[22m[2m)[22m[33m 12231[2mms[22m[39m
+       [33m[2m✓[22m[39m should retry on transient errors [33m 3002[2mms[22m[39m
+       [33m[2m✓[22m[39m should fail after max retries exhausted [33m 3004[2mms[22m[39m
+       [33m[2m✓[22m[39m should retry on transient errors [33m 3005[2mms[22m[39m
+       [33m[2m✓[22m[39m should fail after max retries exhausted [33m 3003[2mms[22m[39m
+ [32m✓[39m tests/integration/cli.test.ts [2m([22m[2m13 tests[22m[2m)[22m[33m 20287[2mms[22m[39m
+       [33m[2m✓[22m[39m should select next feature with --json flag [33m 8227[2mms[22m[39m
+       [33m[2m✓[22m[39m should update feature status to passing [33m 10058[2mms[22m[39m
+ [32m✓[39m tests/gitignore/github-api.test.ts [2m([22m[2m25 tests[22m[2m)[22m[33m 25031[2mms[22m[39m
+     [33m[2m✓[22m[39m should prioritize bundled templates over API [33m 6397[2mms[22m[39m
+     [33m[2m✓[22m[39m should handle all bundled template names [33m 18569[2mms[22m[39m
+ [32m✓[39m tests/integration/tdd-workflow.test.ts [2m([22m[2m8 tests[22m[2m)[22m[33m 31501[2mms[22m[39m
+       [33m[2m✓[22m[39m should display TDD guidance for feature with testRequirements [33m 30862[2mms[22m[39m
+ [32m✓[39m tests/integration/e2e-workflow.test.ts [2m([22m[2m9 tests[22m[2m)[22m[33m 69539[2mms[22m[39m
+       [33m[2m✓[22m[39m should handle complete workflow with pre-populated feature list [33m 23638[2mms[22m[39m
+       [33m[2m✓[22m[39m should verify feature_list.json structure after operations [33m 10075[2mms[22m[39m
+       [33m[2m✓[22m[39m should verify progress.log is updated after done [33m 10094[2mms[22m[39m
+       [33m[2m✓[22m[39m should select features based on priority and dependency status [33m 12118[2mms[22m[39m
+       [33m[2m✓[22m[39m should handle circular dependency gracefully [33m 13085[2mms[22m[39m
+
+[31m⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 10 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/plugin-installer.test.ts[2m > [22mcheckAndInstallPlugins update and first-run flows[2m > [22mshould handle version comparison when installed version exists
+[31m[1mError[22m: ENOTEMPTY: directory not empty, rmdir '/Users/minoo/.claude/plugins/cache/agent-foreman-plugins/agent-foreman/0.1.113'[39m
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - Spinner render()[2m > [22mshould render spinner frames in TTY mode
+[31m[1mAssertionError[22m: expected "Mock" to be called at least once[39m
+[36m [2m❯[22m tests/progress.test.ts:[2m913:25[22m[39m
+    [90m911| [39m
+    [90m912| [39m      [90m// Verify stdout.write was called with spinner frames[39m
+    [90m913| [39m      [34mexpect[39m(mockWrite)[33m.[39m[34mtoHaveBeenCalled[39m()[33m;[39m
+    [90m   | [39m                        [31m^[39m
+    [90m914| [39m      [35mconst[39m calls [33m=[39m mockWrite[33m.[39mmock[33m.[39mcalls[33m.[39m[34mmap[39m(c [33m=>[39m [33mString[39m(c[[34m0[39m]))[33m;[39m
+    [90m915| [39m      const hasSpinnerOutput = calls.some(c => c.includes("Loading dat…
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - Spinner render()[2m > [22mshould render with time format in TTY mode
+[31m[1mAssertionError[22m: expected '' to match /\d+m.*\d+s|\d+s/[39m
+
+[32m- Expected:[39m 
+/\d+m.*\d+s|\d+s/
+
+[31m+ Received:[39m 
+""
+
+[36m [2m❯[22m tests/progress.test.ts:[2m950:21[22m[39m
+    [90m948| [39m      const calls = mockWrite.mock.calls.map(c => String(c[0])).join("…
+    [90m949| [39m      [90m// Should have time format like "1m 5s"[39m
+    [90m950| [39m      [34mexpect[39m(calls)[33m.[39m[34mtoMatch[39m([36m/\d+m.*\d+s|\d+s/[39m)[33m;[39m
+    [90m   | [39m                    [31m^[39m
+    [90m951| [39m
+    [90m952| [39m      mockWrite[33m.[39m[34mmockRestore[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - StepProgress[2m > [22mshould use Spinner in TTY mode and call succeed on completeStep(true)
+[31m[1mAssertionError[22m: expected '' to contain '✓'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- ✓[39m
+
+[36m [2m❯[22m tests/progress.test.ts:[2m989:21[22m[39m
+    [90m987| [39m      const calls = mockWrite.mock.calls.map(c => String(c[0])).join("…
+    [90m988| [39m      [90m// Should have success checkmark[39m
+    [90m989| [39m      [34mexpect[39m(calls)[33m.[39m[34mtoContain[39m([32m"✓"[39m)[33m;[39m
+    [90m   | [39m                    [31m^[39m
+    [90m990| [39m
+    [90m991| [39m      progress[33m.[39m[34mcomplete[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[4/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - StepProgress[2m > [22mshould call fail on completeStep(false) in TTY mode
+[31m[1mAssertionError[22m: expected '' to contain '✗'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- ✗[39m
+
+[36m [2m❯[22m tests/progress.test.ts:[2m1006:21[22m[39m
+    [90m1004| [39m      const calls = mockWrite.mock.calls.map(c => String(c[0])).join("…
+    [90m1005| [39m      [90m// Should have failure X mark[39m
+    [90m1006| [39m      [34mexpect[39m(calls)[33m.[39m[34mtoContain[39m([32m"✗"[39m)[33m;[39m
+    [90m   | [39m                    [31m^[39m
+    [90m1007| [39m
+    [90m1008| [39m      progress[33m.[39m[34mcomplete[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[5/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - StepProgress[2m > [22mshould call warn on warnStep() in TTY mode
+[31m[1mAssertionError[22m: expected '' to contain '⚠'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- ⚠[39m
+
+[36m [2m❯[22m tests/progress.test.ts:[2m1023:21[22m[39m
+    [90m1021| [39m      const calls = mockWrite.mock.calls.map(c => String(c[0])).join("…
+    [90m1022| [39m      [90m// Should have warning symbol[39m
+    [90m1023| [39m      [34mexpect[39m(calls)[33m.[39m[34mtoContain[39m([32m"⚠"[39m)[33m;[39m
+    [90m   | [39m                    [31m^[39m
+    [90m1024| [39m
+    [90m1025| [39m      progress[33m.[39m[34mcomplete[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[6/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - StepProgress[2m > [22mshould call stop on complete() in TTY mode
+[31m[1mAssertionError[22m: expected false to be true // Object.is equality[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- true[39m
+[31m+ false[39m
+
+[36m [2m❯[22m tests/progress.test.ts:[2m1044:28[22m[39m
+    [90m1042| [39m      [35mconst[39m calls [33m=[39m mockWrite[33m.[39mmock[33m.[39mcalls[33m.[39m[34mmap[39m(c [33m=>[39m [33mString[39m(c[[34m0[39m]))[33m;[39m
+    [90m1043| [39m      [35mconst[39m hasClearLine [33m=[39m calls[33m.[39m[34msome[39m(c [33m=>[39m c[33m.[39m[34mincludes[39m([32m"\r"[39m))[33m;[39m
+    [90m1044| [39m      [34mexpect[39m(hasClearLine)[33m.[39m[34mtoBe[39m([35mtrue[39m)[33m;[39m
+    [90m   | [39m                           [31m^[39m
+    [90m1045| [39m
+    [90m1046| [39m      mockWrite[33m.[39m[34mmockRestore[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[7/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - StepProgress[2m > [22mshould not show overview in TTY mode
+[31m[1mAssertionError[22m: expected '\n   Verification steps: 2   1. Step …' not to contain 'Verification steps'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- Verification steps[39m
+[31m+[39m
+[31m+ [7m   [27mVerification steps[7m: 2   1. Step A   2. Step B   [1/2] Step A...[27m[39m
+
+[36m [2m❯[22m tests/progress.test.ts:[2m1058:28[22m[39m
+    [90m1056| [39m      [90m// In TTY mode, showOverview should not log to console[39m
+    [90m1057| [39m      const logCalls = mockLog.mock.calls.map(c => String(c[0])).join(…
+    [90m1058| [39m      [34mexpect[39m(logCalls)[33m.[39mnot[33m.[39m[34mtoContain[39m([32m"Verification steps"[39m)[33m;[39m
+    [90m   | [39m                           [31m^[39m
+    [90m1059| [39m
+    [90m1060| [39m      progress[33m.[39m[34mcomplete[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[8/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - ProgressBar[2m > [22mshould render progress bar to stdout.write in TTY mode
+[31m[1mAssertionError[22m: expected '' to contain '█'[39m
+
+[32m- Expected[39m
+[31m+ Received[39m
+
+[32m- █[39m
+
+[36m [2m❯[22m tests/progress.test.ts:[2m1096:21[22m[39m
+    [90m1094| [39m      const calls = mockWrite.mock.calls.map(c => String(c[0])).join("…
+    [90m1095| [39m      [90m// Should have progress bar characters[39m
+    [90m1096| [39m      [34mexpect[39m(calls)[33m.[39m[34mtoContain[39m([32m"█"[39m)[33m;[39m
+    [90m   | [39m                    [31m^[39m
+    [90m1097| [39m      [34mexpect[39m(calls)[33m.[39m[34mtoContain[39m([32m"░"[39m)[33m;[39m
+    [90m1098| [39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[9/10]⎯[22m[39m
+
+[41m[1m FAIL [22m[49m tests/progress.test.ts[2m > [22mprogress indicators[2m > [22mTTY mode coverage - ProgressBar[2m > [22mshould show percentage in TTY mode
+[31m[1mAssertionError[22m: expected '' to match /50%|100%/[39m
+
+[32m- Expected:[39m 
+/50%|100%/
+
+[31m+ Received:[39m 
+""
+
+[36m [2m❯[22m tests/progress.test.ts:[2m1111:21[22m[39m
+    [90m1109| [39m
+    [90m1110| [39m      const calls = mockWrite.mock.calls.map(c => String(c[0])).join("…
+    [90m1111| [39m      [34mexpect[39m(calls)[33m.[39m[34mtoMatch[39m([36m/50%|100%/[39m)[33m;[39m
+    [90m   | [39m                    [31m^[39m
+    [90m1112| [39m
+    [90m1113| [39m      mockWrite[33m.[39m[34mmockRestore[39m()[33m;[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[10/10]⎯[22m[39m
+
+
+[2m Test Files [22m [1m[31m2 failed[39m[22m[2m | [22m[1m[32m42 passed[39m[22m[90m (44)[39m
+[2m      Tests [22m [1m[31m10 failed[39m[22m[2m | [22m[1m[32m1536 passed[39m[22m[2m | [22m[33m3 skipped[39m[90m (1549)[39m
+[2m   Start at [22m 19:48:26
+[2m   Duration [22m 69.78s[2m (transform 1.78s, setup 334ms, import 2.79s, tests 176.18s, environment 3ms)[22m
+

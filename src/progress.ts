@@ -20,7 +20,7 @@ export function isTTY(): boolean {
     return false;
   }
 
-  return process.stdout.isTTY === true;
+  return process.stdout.isTTY === true && process.stdin.isTTY === true;
 }
 
 /**

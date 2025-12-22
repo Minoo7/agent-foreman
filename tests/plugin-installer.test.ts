@@ -7,6 +7,17 @@ import * as fs from "node:fs";
 import * as path from "node:path";
 import * as os from "node:os";
 
+const PLUGIN_INSTALLER_PATH = "../src/plugin-installer.js";
+
+// Helper to clear module cache for plugin-installer.js
+async function importFreshPluginInstaller() {
+  // Invalidate module cache for plugin-installer.js
+  // @ts-ignore
+  vi.importActual(PLUGIN_INSTALLER_PATH);
+  // @ts-ignore
+  return (await import(PLUGIN_INSTALLER_PATH));
+}
+
 // ============================================================================
 // Test Setup
 // ============================================================================
@@ -30,12 +41,58 @@ function cleanup(dir: string): void {
 
 beforeEach(() => {
   tempDir = createTempDir();
-  originalHome = process.env.HOME;
+  originalHome = os.homedir;
+  vi.spyOn(os, "homedir").mockReturnValue(tempDir);
+
   originalCI = process.env.CI;
   originalNoPluginUpdate = process.env.NO_PLUGIN_UPDATE;
 
   // Set CI to prevent interactive prompts
   process.env.CI = "true";
+
+  // Clear module cache for plugin-installer.js so new homedir is picked up
+  vi.resetModules();
+});
+
+afterEach(() => {
+  cleanup(tempDir);
+
+  // Restore original homedir
+  vi.spyOn(os, "homedir").mockRestore();
+
+  if (originalCI !== undefined) {
+    process.env.CI = originalCI;
+  } else {
+    delete process.env.CI;
+  }
+  if (originalNoPluginUpdate !== undefined) {
+    process.env.NO_PLUGIN_UPDATE = originalNoPluginUpdate;
+  } else {
+    delete process.env.NO_PLUGIN_UPDATE;
+  }
+  vi.restoreAllMocks();
+
+  // Clear module cache for plugin-installer.js so original homedir is picked up
+  vi.resetModules();
+});
+
+afterEach(() => {
+  cleanup(tempDir);
+
+  // Restore original homedir
+  vi.spyOn(os, "homedir").mockRestore();
+
+  if (originalCI !== undefined) {
+    process.env.CI = originalCI;
+  } else {
+    delete process.env.CI;
+  }
+  if (originalNoPluginUpdate !== undefined) {
+    process.env.NO_PLUGIN_UPDATE = originalNoPluginUpdate;
+  } else {
+    delete process.env.NO_PLUGIN_UPDATE;
+  }
+  vi.restoreAllMocks();
 });
 
 afterEach(() => {
