@@ -208,10 +208,15 @@ export async function aiScanProject(
       const elapsed = ((Date.now() - startTime) / 1000).toFixed(0);
       process.stdout.clearLine(0);
       process.stdout.cursorTo(0);
-      process.stdout.write(chalk.gray(`  [2/2] Exploring with ${agentName}... ${chalk.cyan(spinnerFrames[spinnerIdx])} ${chalk.gray(`(${elapsed}s)`)}`));
+      process.stdout.write(
+        chalk.gray(
+          `  [2/2] Exploring with ${agentName}... ${chalk.cyan(spinnerFrames[spinnerIdx])} ${chalk.gray(`(${elapsed}s)`)}`
+        )
+      );
       spinnerIdx = (spinnerIdx + 1) % spinnerFrames.length;
     }, 100);
   } else {
+    // Plain / non-TTY mode: avoid spinners and cursor manipulation
     console.log(chalk.gray(`  [2/2] Exploring with ${agentName}...`));
   }
 
@@ -243,9 +248,19 @@ export async function aiScanProject(
   console.log(chalk.gray(`  [2/2] Exploring with ${agentName}... ${chalk.green("✓")} ${chalk.gray(`(${elapsed}s)`)}`));
 
   // Parse the exploration results
-  process.stdout.write(chalk.gray("  [✓] Parsing exploration results..."));
+  if (isTTY()) {
+    process.stdout.write(chalk.gray("  [✓] Parsing exploration results..."));
+  } else {
+    console.log(chalk.gray("  [✓] Parsing exploration results..."));
+  }
+
   const analysis = parseAIResponse(result.output);
-  console.log(chalk.green(" done"));
+
+  if (isTTY()) {
+    console.log(chalk.green(" done"));
+  } else {
+    console.log(chalk.green("  [✓] Parsing exploration results... done"));
+  }
 
   if (analysis.success) {
     analysis.agentUsed = result.agentUsed;

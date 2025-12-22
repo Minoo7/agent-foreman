@@ -21,6 +21,11 @@ const TDD_PROMPT_TIMEOUT_MS = 10000; // 10 seconds
  * Default is "recommended" (tests suggested but not required)
  */
 async function promptTDDMode(): Promise<TDDMode | undefined> {
+  // If not a TTY, skip prompt and use recommended default
+  if (!process.stdin.isTTY) {
+    return "recommended";
+  }
+
   const readline = await import("node:readline");
   const rl = readline.createInterface({
     input: process.stdin,
@@ -70,7 +75,12 @@ async function promptTDDMode(): Promise<TDDMode | undefined> {
  * Initialize the agent-foreman harness
  * Refactored to use helper functions for better maintainability
  */
-export async function runInit(goal: string, mode: InitMode, verbose: boolean): Promise<void> {
+export async function runInit(
+  goal: string,
+  mode: InitMode,
+  verbose: boolean,
+  tddModeOverride?: TDDMode
+): Promise<void> {
   const cwd = process.cwd();
   console.log(chalk.blue(`🚀 Initializing harness (mode: ${mode})...`));
 
@@ -112,8 +122,8 @@ export async function runInit(goal: string, mode: InitMode, verbose: boolean): P
   }
 
   // Step 1.6: Prompt for TDD mode (only for new or merge mode, and if not skipping)
-  let tddMode: TDDMode | undefined;
-  if (mode !== "scan" && (!listExists || mode === "new")) {
+  let tddMode: TDDMode | undefined = tddModeOverride;
+  if (!tddMode && mode !== "scan" && (!listExists || mode === "new")) {
     tddMode = await promptTDDMode();
   }
 

@@ -30,8 +30,8 @@ function firstNonEmptyEnv(names: readonly string[]): string | undefined {
 }
 
 function defaultOpencodeAgent(): string {
-  // Keep output minimal/structured for JSON-only prompts used by agent-foreman scanners.
-  return firstNonEmptyEnv(OPENCODE_AGENT_ENV_VARS) ?? "summary";
+  // Use 'build' agent by default for full development capabilities (like Claude's bypassPermissions)
+  return firstNonEmptyEnv(OPENCODE_AGENT_ENV_VARS) ?? "build";
 }
 
 function defaultOpencodeModel(): string | undefined {
@@ -478,7 +478,7 @@ export async function callAnyAvailableAgent(
           spinnerIdx = (spinnerIdx + 1) % spinnerFrames.length;
         }, 100);
       } else {
-        console.log(`        Using ${name}...`);
+        console.log(chalk.blue(`        Using ${name}...`));
       }
     }
 
@@ -494,8 +494,10 @@ export async function callAnyAvailableAgent(
         if (isTTY()) {
           process.stdout.clearLine(0);
           process.stdout.cursorTo(0);
+          process.stdout.write(chalk.blue(`        Using ${name}... ${chalk.green("✓")} ${chalk.gray(`(${elapsed}s)`)}\n`));
+        } else {
+          console.log(chalk.blue(`        Using ${name}... ${chalk.green("✓")} ${chalk.gray(`(${elapsed}s)`)}`));
         }
-        console.log(`        Using ${name}... ${chalk.green("✓")} ${chalk.gray(`(${elapsed}s)`)}`);
       }
       return { ...result, agentUsed: name };
     }
@@ -504,8 +506,10 @@ export async function callAnyAvailableAgent(
       if (isTTY()) {
         process.stdout.clearLine(0);
         process.stdout.cursorTo(0);
+        process.stdout.write(chalk.blue(`        Using ${name}... ${chalk.red("✗")} ${chalk.gray(`(${elapsed}s)`)}\n`));
+      } else {
+        console.log(chalk.blue(`        Using ${name}... ${chalk.red("✗")} ${chalk.gray(`(${elapsed}s)`)}`));
       }
-      console.log(`        Using ${name}... ${chalk.red("✗")} ${chalk.gray(`(${elapsed}s)`)}`);
       if (verbose) {
         console.log(chalk.yellow(`        Error: ${result.error}`));
       }

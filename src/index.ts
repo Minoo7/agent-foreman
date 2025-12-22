@@ -9,7 +9,7 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 
-import type { InitMode } from "./types.js";
+import type { InitMode, TDDMode } from "./types.js";
 import { getCurrentVersion } from "./upgrade.js";
 import { interactiveUpgradeCheck } from "./upgrade.js";
 import { checkAndInstallPlugins } from "./plugin-installer.js";
@@ -39,7 +39,23 @@ async function main() {
 
   await yargs(hideBin(process.argv))
     .scriptName("agent-foreman")
-    .usage("$0 <command> [options]")
+    .option("verbose", {
+      alias: "v",
+      type: "boolean",
+      default: false,
+      global: true,
+    })
+    .option("plain", {
+      type: "boolean",
+      default: false,
+      describe: "Enable plain output mode (no animations or cursor manipulation)",
+      global: true,
+    })
+    .middleware((argv) => {
+      if (argv.plain) {
+        process.env.AGENT_FOREMAN_PLAIN = "true";
+      }
+    })
     .command(
       "analyze [output]",
       "Generate AI-powered project analysis report",
@@ -48,7 +64,7 @@ async function main() {
           .positional("output", {
             describe: "Output path for survey markdown",
             type: "string",
-            default: "docs/ARCHITECTURE.md",
+            default: "docs/PROJECT_SURVEY.md",
           })
           .option("verbose", {
             alias: "v",
@@ -80,10 +96,15 @@ async function main() {
             alias: "v",
             type: "boolean",
             default: false,
+          })
+          .option("tdd", {
+            describe: "Set TDD mode (strict, recommended, disabled)",
+            type: "string",
+            choices: ["strict", "recommended", "disabled"] as const,
           }),
       async (argv) => {
         const goal = argv.goal || (await detectProjectGoal(process.cwd()));
-        await runInit(goal, argv.mode as InitMode, argv.verbose);
+        await runInit(goal, argv.mode as InitMode, argv.verbose as boolean, argv.tdd as TDDMode | undefined);
       }
     )
     .command(
