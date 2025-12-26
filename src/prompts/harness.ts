@@ -19,6 +19,10 @@ ${goal}
 
 ---
 
+*Harness documentation is in \`.claude/rules/\` - loaded automatically by Claude Code*
+`;
+}
+
 /**
  * Generate minimal AGENTS.md content for a project (OpenCode)
  *
