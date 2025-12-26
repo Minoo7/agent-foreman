@@ -29,6 +29,7 @@ import {
   runTDD,
   detectProjectGoal,
 } from "./commands/index.js";
+import { runOpencodeInstall } from "./opencode-installer.js";
 
 async function main() {
   // Run interactive upgrade check (prompts user if new version available)
@@ -368,7 +369,7 @@ async function main() {
     )
     .command(
       "install",
-      "Install Claude Code plugin (marketplace + enable)",
+      "Install plugin (Claude Code by default, or --opencode for OpenCode)",
       (yargs) =>
         yargs
           .option("force", {
@@ -376,9 +377,18 @@ async function main() {
             type: "boolean",
             default: false,
             describe: "Force reinstall even if already installed",
+          })
+          .option("opencode", {
+            type: "boolean",
+            default: false,
+            describe: "Install OpenCode plugin to current project (.opencode/)",
           }),
       async (argv) => {
-        await runInstall(argv.force);
+        if (argv.opencode) {
+          await runOpencodeInstall(argv.force);
+        } else {
+          await runInstall(argv.force);
+        }
       }
     )
     .command(

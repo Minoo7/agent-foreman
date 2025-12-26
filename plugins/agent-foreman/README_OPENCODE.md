@@ -2,29 +2,70 @@
 
 This plugin integrates the `agent-foreman` CLI into OpenCode, allowing you to manage feature-driven development directly from your AI assistant.
 
+## Quick Install
+
+The easiest way to install the plugin in any OpenCode project:
+
+```bash
+# From your project directory:
+agent-foreman install --opencode
+
+# Install plugin dependencies:
+cd .opencode && npm install
+```
+
+Then restart OpenCode and you're ready to use `/agent-foreman` commands.
+
 ## Prerequisites
 
 The plugin requires the `agent-foreman` CLI to be available in your system PATH.
 
-### Option A: Use Your Local Version (Recommended for Testing)
-If you want to use the version from this repository (including any local changes):
-1. Open a terminal in the root of this repository.
-2. Run:
-   ```bash
-   npm install && npm run build
-   npm link
-   ```
-   This makes the `agent-foreman` command point to your local code.
-
-### Option B: Use Public Version
-For standard usage (once changes are published):
+### Option A: Install from npm (Recommended)
 ```bash
 npm install -g agent-foreman
 ```
 
-## Installation
+### Option B: Use Local Version (for development)
+If you want to use the version from this repository:
+```bash
+# From the agent-foreman repo root:
+npm install && npm run build
+npm link
+```
 
-To use this plugin in another OpenCode project, you must **manually install the plugin files** from this repository.
+## OpenCode Agent Configuration
+
+When using `AGENT_FOREMAN_AGENTS=opencode`, the integration invokes `opencode run` with these characteristics:
+
+### Prompt Passing
+- The prompt is passed as a **positional argument** (NOT stdin, NOT `@file`).
+- Example: `opencode run --format default "Your prompt here..."`
+
+### Environment Variables (All Optional)
+No default model or agent is hardcoded in code. Configure these only if needed:
+
+| Variable | Description |
+|----------|-------------|
+| `AGENT_FOREMAN_OPENCODE_MODEL` or `OPENCODE_MODEL` | Model to use (e.g., `anthropic/claude-sonnet-4-20250514`) |
+| `AGENT_FOREMAN_OPENCODE_AGENT` or `OPENCODE_AGENT` | Agent type to use (e.g., `build`, `summary`) |
+
+If not set, OpenCode uses its own configured defaults from `opencode.json` or provider settings.
+
+### Permissions
+The plugin automatically sets `OPENCODE_PERMISSION` to allow all operations for non-interactive execution:
+```json
+{
+  "bash": "allow",
+  "edit": "allow",
+  "webfetch": "allow",
+  "doom_loop": "allow",
+  "external_directory": "allow"
+}
+```
+
+## Manual Installation (Alternative)
+
+If you prefer to manually copy files instead of using `agent-foreman install --opencode`:
 
 1. **Create the plugin directory** in your target project:
    ```bash

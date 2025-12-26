@@ -39,5 +39,13 @@ src/gitignore/embedded-templates.generated.ts
 src/plugins-bundle.generated.ts
 src/version.generated.ts
 dist/bin/
+
+# Debug/temp artifacts
+prompt.txt
+full_test_output.txt
+_af-sample-*
+temppp/
+testingimplementation/
+
 # === Added by agent-foreman ===
 ai/capabilities.json

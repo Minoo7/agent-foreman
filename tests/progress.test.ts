@@ -874,6 +874,9 @@ describe("progress indicators", () => {
 
   describe("TTY mode coverage - Spinner render()", () => {
     let originalIsTTY: boolean | undefined;
+    let mockWrite: ReturnType<typeof vi.spyOn>;
+    let mockClearLine: ReturnType<typeof vi.spyOn>;
+    let mockCursorTo: ReturnType<typeof vi.spyOn>;
 
     beforeEach(() => {
       vi.useFakeTimers();

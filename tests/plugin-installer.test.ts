@@ -41,8 +41,8 @@ function cleanup(dir: string): void {
 
 beforeEach(() => {
   tempDir = createTempDir();
-  originalHome = os.homedir;
-  vi.spyOn(os, "homedir").mockReturnValue(tempDir);
+  originalHome = process.env.HOME;
+  process.env.HOME = tempDir; // Redirect home to tempDir
 
   originalCI = process.env.CI;
   originalNoPluginUpdate = process.env.NO_PLUGIN_UPDATE;
@@ -57,8 +57,7 @@ beforeEach(() => {
 afterEach(() => {
   cleanup(tempDir);
 
-  // Restore original homedir
-  vi.spyOn(os, "homedir").mockRestore();
+  process.env.HOME = originalHome; // Restore original HOME
 
   if (originalCI !== undefined) {
     process.env.CI = originalCI;
@@ -75,56 +74,17 @@ afterEach(() => {
   // Clear module cache for plugin-installer.js so original homedir is picked up
   vi.resetModules();
 });
-
-afterEach(() => {
-  cleanup(tempDir);
-
-  // Restore original homedir
-  vi.spyOn(os, "homedir").mockRestore();
-
-  if (originalCI !== undefined) {
-    process.env.CI = originalCI;
-  } else {
-    delete process.env.CI;
-  }
-  if (originalNoPluginUpdate !== undefined) {
-    process.env.NO_PLUGIN_UPDATE = originalNoPluginUpdate;
-  } else {
-    delete process.env.NO_PLUGIN_UPDATE;
-  }
-  vi.restoreAllMocks();
-});
-
-afterEach(() => {
-  cleanup(tempDir);
-  if (originalHome !== undefined) {
-    process.env.HOME = originalHome;
-  }
-  if (originalCI !== undefined) {
-    process.env.CI = originalCI;
-  } else {
-    delete process.env.CI;
-  }
-  if (originalNoPluginUpdate !== undefined) {
-    process.env.NO_PLUGIN_UPDATE = originalNoPluginUpdate;
-  } else {
-    delete process.env.NO_PLUGIN_UPDATE;
-  }
-  vi.restoreAllMocks();
-});
-
-// ============================================================================
 // Module Import Tests
 // ============================================================================
 
 describe("plugin-installer module", () => {
   it("should export checkAndInstallPlugins function", async () => {
-    const module = await import("../src/plugin-installer.js");
+    const module = await importFreshPluginInstaller();
     expect(typeof module.checkAndInstallPlugins).toBe("function");
   });
 
   it("should skip installation when not in compiled mode", async () => {
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // In development mode (no embedded plugins), should skip silently
     await expect(checkAndInstallPlugins()).resolves.not.toThrow();
@@ -137,7 +97,7 @@ describe("plugin-installer module", () => {
 
 describe("compiled binary detection", () => {
   it("should detect non-compiled mode when EMBEDDED_PLUGINS is empty", async () => {
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // In development mode, checkAndInstallPlugins should return early
     // without any side effects
@@ -159,7 +119,7 @@ describe("version file handling", () => {
   it("should handle missing version file gracefully", async () => {
     // The getInstalledVersion function is internal, but we can test
     // the behavior through checkAndInstallPlugins
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // Should not throw when version file doesn't exist
     await expect(checkAndInstallPlugins()).resolves.not.toThrow();
@@ -174,7 +134,7 @@ describe("plugin installation flow", () => {
   it("should skip installation in CI environment", async () => {
     process.env.CI = "true";
 
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // Should complete without prompting in CI
     await expect(checkAndInstallPlugins()).resolves.not.toThrow();
@@ -183,7 +143,7 @@ describe("plugin installation flow", () => {
   it("should skip installation when NO_PLUGIN_UPDATE is set", async () => {
     process.env.NO_PLUGIN_UPDATE = "true";
 
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // Should complete without prompting
     await expect(checkAndInstallPlugins()).resolves.not.toThrow();
@@ -196,7 +156,7 @@ describe("plugin installation flow", () => {
 
 describe("error handling", () => {
   it("should handle installation errors gracefully", async () => {
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // Should not throw even if internal operations fail
     await expect(checkAndInstallPlugins()).resolves.not.toThrow();
@@ -209,7 +169,7 @@ describe("error handling", () => {
 
 describe("integration", () => {
   it("should be safe to call multiple times", async () => {
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // Multiple calls should be idempotent
     await checkAndInstallPlugins();
@@ -221,7 +181,7 @@ describe("integration", () => {
   });
 
   it("should work in non-TTY environment", async () => {
-    const { checkAndInstallPlugins } = await import("../src/plugin-installer.js");
+    const { checkAndInstallPlugins } = await importFreshPluginInstaller();
 
     // Non-TTY should skip prompts
     const originalIsTTY = process.stdin.isTTY;
@@ -242,33 +202,33 @@ describe("integration", () => {
 
 describe("plugin registry functions - export verification", () => {
   it("isCompiledBinary should return a boolean", async () => {
-    const { isCompiledBinary } = await import("../src/plugin-installer.js");
+    const { isCompiledBinary } = await importFreshPluginInstaller();
     // Returns true if plugins-bundle.generated.ts has embedded plugins
     // Returns false in pure development mode
     expect(typeof isCompiledBinary()).toBe("boolean");
   });
 
   it("should export isMarketplaceRegistered function", async () => {
-    const { isMarketplaceRegistered } = await import("../src/plugin-installer.js");
+    const { isMarketplaceRegistered } = await importFreshPluginInstaller();
     expect(typeof isMarketplaceRegistered).toBe("function");
     // Just verify it returns a boolean
     expect(typeof isMarketplaceRegistered()).toBe("boolean");
   });
 
   it("should export isPluginInstalled function", async () => {
-    const { isPluginInstalled } = await import("../src/plugin-installer.js");
+    const { isPluginInstalled } = await importFreshPluginInstaller();
     expect(typeof isPluginInstalled).toBe("function");
     expect(typeof isPluginInstalled()).toBe("boolean");
   });
 
   it("should export isPluginEnabled function", async () => {
-    const { isPluginEnabled } = await import("../src/plugin-installer.js");
+    const { isPluginEnabled } = await importFreshPluginInstaller();
     expect(typeof isPluginEnabled).toBe("function");
     expect(typeof isPluginEnabled()).toBe("boolean");
   });
 
   it("getPluginInstallInfo should return correct structure", async () => {
-    const { getPluginInstallInfo } = await import("../src/plugin-installer.js");
+    const { getPluginInstallInfo } = await importFreshPluginInstaller();
     const info = getPluginInstallInfo();
 
     // Verify structure
@@ -288,17 +248,17 @@ describe("plugin registry functions - export verification", () => {
 
 describe("install and uninstall flows - export verification", () => {
   it("should export fullInstall function", async () => {
-    const { fullInstall } = await import("../src/plugin-installer.js");
+    const { fullInstall } = await importFreshPluginInstaller();
     expect(typeof fullInstall).toBe("function");
   });
 
   it("should export fullUninstall function", async () => {
-    const { fullUninstall } = await import("../src/plugin-installer.js");
+    const { fullUninstall } = await importFreshPluginInstaller();
     expect(typeof fullUninstall).toBe("function");
   });
 
   it("fullUninstall should handle missing files gracefully", async () => {
-    const { fullUninstall } = await import("../src/plugin-installer.js");
+    const { fullUninstall } = await importFreshPluginInstaller();
     // Should not throw even when files don't exist in a fresh environment
     // Note: Since module caches paths, this uses real HOME directory
     expect(() => fullUninstall()).not.toThrow();
@@ -312,7 +272,7 @@ describe("install and uninstall flows - export verification", () => {
 
 describe("fullInstall integration", () => {
   it("should execute fullInstall without throwing", async () => {
-    const { fullInstall, fullUninstall, getPluginInstallInfo } = await import("../src/plugin-installer.js");
+    const { fullInstall, fullUninstall, getPluginInstallInfo } = await importFreshPluginInstaller();
 
     // Record initial state
     const beforeInfo = getPluginInstallInfo();
@@ -332,7 +292,7 @@ describe("fullInstall integration", () => {
   });
 
   it("should be idempotent - calling fullInstall twice should not throw", async () => {
-    const { fullInstall, fullUninstall } = await import("../src/plugin-installer.js");
+    const { fullInstall, fullUninstall } = await importFreshPluginInstaller();
 
     // First install
     expect(() => fullInstall()).not.toThrow();
@@ -345,7 +305,7 @@ describe("fullInstall integration", () => {
   });
 
   it("fullUninstall should clean up all installed files", async () => {
-    const { fullInstall, fullUninstall, isPluginInstalled, isPluginEnabled } = await import("../src/plugin-installer.js");
+    const { fullInstall, fullUninstall, isPluginInstalled, isPluginEnabled } = await importFreshPluginInstaller();
 
     // Install first
     fullInstall();
@@ -373,7 +333,7 @@ describe("checkAndInstallPlugins with compiled binary simulation", () => {
       fullUninstall,
       checkAndInstallPlugins,
       isMarketplaceRegistered
-    } = await import("../src/plugin-installer.js");
+    } = await importFreshPluginInstaller();
 
     // Pre-install to register marketplace
     fullInstall();
@@ -401,7 +361,7 @@ describe("checkAndInstallPlugins with compiled binary simulation", () => {
 
 describe("registry function return types", () => {
   it("isMarketplaceRegistered should return falsy when not registered", async () => {
-    const { isMarketplaceRegistered, fullUninstall } = await import("../src/plugin-installer.js");
+    const { isMarketplaceRegistered, fullUninstall } = await importFreshPluginInstaller();
 
     // Ensure clean state
     fullUninstall();
@@ -411,7 +371,7 @@ describe("registry function return types", () => {
   });
 
   it("isPluginInstalled should return falsy when not installed", async () => {
-    const { isPluginInstalled, fullUninstall } = await import("../src/plugin-installer.js");
+    const { isPluginInstalled, fullUninstall } = await importFreshPluginInstaller();
 
     // Ensure clean state
     fullUninstall();
@@ -420,7 +380,7 @@ describe("registry function return types", () => {
   });
 
   it("isPluginEnabled should return falsy when not enabled", async () => {
-    const { isPluginEnabled, fullUninstall } = await import("../src/plugin-installer.js");
+    const { isPluginEnabled, fullUninstall } = await importFreshPluginInstaller();
 
     // Ensure clean state
     fullUninstall();
@@ -429,7 +389,7 @@ describe("registry function return types", () => {
   });
 
   it("getPluginInstallInfo should return structure with falsy values after uninstall", async () => {
-    const { getPluginInstallInfo, fullUninstall } = await import("../src/plugin-installer.js");
+    const { getPluginInstallInfo, fullUninstall } = await importFreshPluginInstaller();
 
     // Ensure clean state
     fullUninstall();
@@ -448,7 +408,7 @@ describe("registry function return types", () => {
 
 describe("checkAndInstallPlugins update and first-run flows", () => {
   it("should handle plugin update when marketplace already registered", async () => {
-    const module = await import("../src/plugin-installer.js");
+    const module = await importFreshPluginInstaller();
     const { fullInstall, fullUninstall, checkAndInstallPlugins, getPluginInstallInfo } = module;
 
     // Install first to register marketplace
@@ -471,7 +431,7 @@ describe("checkAndInstallPlugins update and first-run flows", () => {
       fullUninstall,
       checkAndInstallPlugins,
       getPluginInstallInfo
-    } = await import("../src/plugin-installer.js");
+    } = await importFreshPluginInstaller();
 
     // Pre-install to create version file
     fullInstall();
@@ -495,7 +455,7 @@ describe("checkAndInstallPlugins update and first-run flows", () => {
   });
 
   it("should use bundledVersion for comparison", async () => {
-    const { getPluginInstallInfo, fullInstall, fullUninstall } = await import("../src/plugin-installer.js");
+    const { getPluginInstallInfo, fullInstall, fullUninstall } = await importFreshPluginInstaller();
 
     fullInstall();
     const info = getPluginInstallInfo();
@@ -513,7 +473,7 @@ describe("checkAndInstallPlugins update and first-run flows", () => {
 
 describe("version comparison behavior in checkAndInstallPlugins", () => {
   it("should not update when installed version matches bundled", async () => {
-    const { fullInstall, fullUninstall, checkAndInstallPlugins, getPluginInstallInfo } = await import("../src/plugin-installer.js");
+    const { fullInstall, fullUninstall, checkAndInstallPlugins, getPluginInstallInfo } = await importFreshPluginInstaller();
 
     // Install to sync versions
     fullInstall();

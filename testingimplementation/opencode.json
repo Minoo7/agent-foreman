@@ -1,6 +1,0 @@
-{
-  "instructions": [
-    ".opencode/rules/*.md"
-  ],
-  "$schema": "https://opencode.ai/config.json"
-}

@@ -14,9 +14,12 @@ import { debugAgents } from "./debug.js";
 /**
  * OpenCode configuration helpers
  *
- * NOTE: `opencode run` accepts the prompt as positional args (NOT stdin).
- * In practice, it may also require an explicit model to avoid hanging
- * (e.g. when the default provider/model is rate-limited).
+ * NOTE: `opencode run` accepts the prompt as a positional argument (NOT stdin).
+ * Model and agent are configurable ONLY via environment variables:
+ * - AGENT_FOREMAN_OPENCODE_MODEL / OPENCODE_MODEL (optional)
+ * - AGENT_FOREMAN_OPENCODE_AGENT / OPENCODE_AGENT (optional)
+ *
+ * No default model is hardcoded - OpenCode uses its own configured defaults.
  */
 const OPENCODE_MODEL_ENV_VARS = ["AGENT_FOREMAN_OPENCODE_MODEL", "OPENCODE_MODEL"] as const;
 const OPENCODE_AGENT_ENV_VARS = ["AGENT_FOREMAN_OPENCODE_AGENT", "OPENCODE_AGENT"] as const;
@@ -29,32 +32,29 @@ function firstNonEmptyEnv(names: readonly string[]): string | undefined {
   return undefined;
 }
 
-function defaultOpencodeAgent(): string {
-  // Use 'build' agent by default for full development capabilities (like Claude's bypassPermissions)
-  return firstNonEmptyEnv(OPENCODE_AGENT_ENV_VARS) ?? "build";
+/** Returns agent name if set via env, otherwise undefined (no default). */
+function getOpencodeAgent(): string | undefined {
+  return firstNonEmptyEnv(OPENCODE_AGENT_ENV_VARS);
 }
 
-function defaultOpencodeModel(): string | undefined {
-  const configured = firstNonEmptyEnv(OPENCODE_MODEL_ENV_VARS);
-  if (configured) return configured;
-
-  // Heuristic: if Vertex is configured, default to a Gemini model (avoids Anthropic/Vertex
-  // quota issues seen in non-interactive runs).
-  const hasVertex =
-    Boolean(process.env.GOOGLE_VERTEX_PROJECT) ||
-    Boolean(process.env.GOOGLE_CLOUD_PROJECT) ||
-    Boolean(process.env.GOOGLE_VERTEX_LOCATION);
-
-  return hasVertex ? "google-vertex/gemini-2.5-flash" : undefined;
+/** Returns model if set via env, otherwise undefined (no default). */
+function getOpencodeModel(): string | undefined {
+  return firstNonEmptyEnv(OPENCODE_MODEL_ENV_VARS);
 }
 
 function buildOpencodeCommand(): string[] {
-  const agent = defaultOpencodeAgent();
-  const model = defaultOpencodeModel();
+  const agent = getOpencodeAgent();
+  const model = getOpencodeModel();
 
-  // Note: Permissions are handled via OPENCODE_PERMISSION env var, not CLI flags
-  const cmd = ["opencode", "run", "--format", "default", "--agent", agent];
+  // Base command: opencode run --format default
+  const cmd = ["opencode", "run", "--format", "default"];
+
+  // Only include --agent if explicitly configured via env
+  if (agent) cmd.push("--agent", agent);
+
+  // Only include --model if explicitly configured via env
   if (model) cmd.push("--model", model);
+
   return cmd;
 }
 
@@ -65,18 +65,8 @@ export interface AgentConfig {
   name: string;
   command: string[];
   promptViaStdin?: boolean;
-  promptViaFile?: boolean; // Pass prompt via @filename argument
-  env?: Record<string, string>; // Custom environment variables
-}
-
-/**
- * Agent configuration
- */
-export interface AgentConfig {
-  name: string;
-  command: string[];
-  promptViaStdin?: boolean;
   promptViaFile?: boolean; // Pass prompt via @filename argument (supported by some CLIs; NOT opencode)
+  env?: Record<string, string>; // Custom environment variables
 }
 
 /**
@@ -124,14 +114,15 @@ export const DEFAULT_AGENTS: AgentConfig[] = [
     promptViaStdin: true,
   },
   // OpenCode: non-interactive mode via `opencode run`
-  // Prompt is passed as a positional arg (NOT stdin). Model/agent are configurable via env:
-  // - AGENT_FOREMAN_OPENCODE_MODEL / OPENCODE_MODEL
-  // - AGENT_FOREMAN_OPENCODE_AGENT / OPENCODE_AGENT
+  // Prompt is passed as a positional argument (NOT stdin, NOT @file).
+  // Model/agent are only included if explicitly configured via env:
+  // - AGENT_FOREMAN_OPENCODE_MODEL / OPENCODE_MODEL (optional)
+  // - AGENT_FOREMAN_OPENCODE_AGENT / OPENCODE_AGENT (optional)
   {
     name: "opencode",
     command: buildOpencodeCommand(),
     promptViaStdin: false,
-    promptViaFile: true,
+    promptViaFile: false,
     env: {
       // Auto-approve all permissions for non-interactive execution
       OPENCODE_PERMISSION: JSON.stringify({
