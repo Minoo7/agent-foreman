@@ -1,10 +1,8 @@
 # agents Command
 
-Show available AI agents and their status.
+Show available AI agents status and priority.
 
-> 显示可用的 AI 代理及其状态。
-
-## Synopsis
+## Command Syntax
 
 ```bash
 agent-foreman agents
@@ -12,269 +10,199 @@ agent-foreman agents
 
 ## Description
 
-The `agents` command displays which AI agents are available on the system and their priority order. It helps users understand which agent will be used for AI-powered operations like analysis, verification, and capability detection.
-
-> `agents` 命令显示系统上可用的 AI 代理及其优先级顺序。它帮助用户了解哪个代理将用于 AI 驱动的操作，如分析、验证和能力检测。
-
-## Options
-
-This command has no options.
+The `agents` command displays the status of available AI agents (Claude, Codex, Gemini, OpenCode) and their priority order for use in analysis, verification, and other AI-powered operations.
 
 ## Execution Flow
 
 ```mermaid
 flowchart TD
-    Start([Start]) --> PrintStatus[printAgentStatus]
+    A[Start: agents command] --> B[printAgentStatus]
+    B --> C[Check Claude Availability]
+    B --> D[Check Codex Availability]
+    B --> E[Check Gemini Availability]
 
-    subgraph Detection["Agent Detection"]
-        PrintStatus --> GetPriority[Get Priority Order]
-        GetPriority --> CheckClaude[Check Claude]
-        CheckClaude --> CheckCodex[Check Codex]
-        CheckCodex --> CheckGemini[Check Gemini]
-    end
+    C --> F[Display Status]
+    D --> F
+    E --> F
 
-    subgraph Display["Display Status"]
-        CheckGemini --> ShowPriority[Show Priority Order]
-        ShowPriority --> ShowInstalled[Show Installed Agents]
-        ShowInstalled --> ShowFirst[Show First Available]
-    end
-
-    ShowFirst --> End([End])
+    F --> G[Show Priority Order]
+    G --> H[End]
 ```
-
-## Agent Priority System
-
-```mermaid
-flowchart TD
-    subgraph Priority["Default Priority Order"]
-        direction LR
-        P1[1. Claude] --> P2[2. Codex] --> P3[3. Gemini]
-    end
-
-    subgraph Selection["Agent Selection"]
-        CheckAvailable{Agent Available?}
-        CheckAvailable -->|Yes| UseAgent[Use This Agent]
-        CheckAvailable -->|No| NextAgent[Try Next]
-    end
-
-    P1 --> CheckAvailable
-    NextAgent --> P2
-    P2 --> CheckAvailable
-    NextAgent --> P3
-```
-
-### Priority Order
-
-The default priority order is:
-1. **Claude** (highest priority)
-2. **Codex**
-3. **Gemini** (lowest priority)
-
-**OpenCode** is also supported but not in the default priority. Enable it via the environment variable.
-
-The first available agent in priority order will be used for all AI operations.
-
-### Environment Variable Override
-
-The priority order can be customized using the `AGENT_FOREMAN_AGENTS` environment variable:
-
-```bash
-# Use Gemini first, then Claude
-export AGENT_FOREMAN_AGENTS="gemini,claude"
-
-# Use only Codex
-export AGENT_FOREMAN_AGENTS="codex"
-
-# Use OpenCode first, then Claude as fallback
-export AGENT_FOREMAN_AGENTS="opencode,claude"
-```
-
-## Agent CLI Invocations
-
-```mermaid
-flowchart LR
-    subgraph Agents["Agent CLI Commands"]
-        Claude[claude CLI]
-        Codex[codex CLI]
-        Gemini[gemini CLI]
-        OpenCode[opencode CLI]
-    end
-
-    subgraph Flags["Automation Flags"]
-        ClaudeFlags["--print
---output-format text
---permission-mode bypassPermissions"]
-        CodexFlags["--full-auto
---skip-git-repo-check"]
-        GeminiFlags["--output-format text
---yolo"]
-        OpenCodeFlags["run --format default"]
-    end
-
-    Claude --> ClaudeFlags
-    Codex --> CodexFlags
-    Gemini --> GeminiFlags
-    OpenCode --> OpenCodeFlags
-```
-
-### Claude
-```bash
-claude --print --output-format text --permission-mode bypassPermissions -
-```
-- `--print`: Output response only
-- `--output-format text`: Plain text output
-- `--permission-mode bypassPermissions`: Allow all operations
-- `-`: Read prompt from stdin
-
-### Codex
-```bash
-codex exec --skip-git-repo-check --full-auto -
-```
-- `--skip-git-repo-check`: Skip git repository validation
-- `--full-auto`: Fully autonomous mode
-- `-`: Read prompt from stdin
-
-### Gemini
-```bash
-gemini --output-format text --yolo
-```
-- `--output-format text`: Plain text output
-- `--yolo`: Autonomous mode (skip confirmations)
-
-### OpenCode
-```bash
-opencode run --format default @/path/to/prompt.txt
-```
-- `run`: Non-interactive mode
-- `--format default`: Human-readable output
-- Prompt is passed via `@file` argument to bypass shell size limits and handle special characters
-
-## Agent Availability Detection
-
-```mermaid
-flowchart TD
-    Agent[Agent Name] --> CheckPath[Check PATH]
-
-    CheckPath --> Found{Command Found?}
-    Found -->|Yes| CheckVersion[Check Version]
-    Found -->|No| NotAvailable[Not Available]
-
-    CheckVersion --> VersionOk{Version OK?}
-    VersionOk -->|Yes| Available[Available]
-    VersionOk -->|No| NotAvailable
-```
-
-Agent availability is detected by:
-1. Checking if the CLI command exists in PATH
-2. Optionally checking version compatibility
 
 ## Data Flow Diagram
 
 ```mermaid
-flowchart LR
-    subgraph Input
-        EnvVar[AGENT_FOREMAN_AGENTS]
-        SystemPath[System PATH]
+graph TB
+    subgraph Detection["Agent Detection"]
+        A1[commandExists: claude]
+        A2[commandExists: codex]
+        A3[commandExists: gemini]
+        A4[commandExists: opencode]
     end
 
-    subgraph Processing
-        PriorityParser[Priority Parser]
-        Detector[Agent Detector]
-        Selector[Agent Selector]
+    subgraph Status["Status Check"]
+        B1[Check PATH]
+        B2[Verify Executable]
+        B3[Test Invocation]
     end
 
     subgraph Output
-        Console[Console Display]
+        C1[Agent List]
+        C2[Availability Status]
+        C3[Priority Order]
     end
 
-    EnvVar --> PriorityParser
-    PriorityParser --> Selector
+    A1 --> B1
+    A2 --> B1
+    A3 --> B1
+    A4 --> B1
 
-    SystemPath --> Detector
-    Detector --> Selector
+    B1 --> B2
+    B2 --> B3
 
-    Selector --> Console
+    B3 --> C1
+    B3 --> C2
+    B3 --> C3
 ```
 
-## Dependencies
+## Key Functions
 
-### Internal Modules
+### `printAgentStatus()`
 
-- `src/agents.ts` - Agent management
-  - `printAgentStatus()` - Display agent status
-  - `getAgentPriorityString()` - Get priority order string
-  - `getAvailableAgents()` - Detect available agents
-  - `spawnAgent()` - Spawn agent subprocess
+**Location**: `src/agents/orchestrator.ts:127`
 
-### External Dependencies
+Prints the status of all configured AI agents.
 
-- AI CLI tools (optional, at least one required):
-  - `claude` - Anthropic Claude CLI
-  - `codex` - OpenAI Codex CLI
-  - `gemini` - Google Gemini CLI
-  - `opencode` - OpenCode CLI
+**Output**:
+- Lists each agent with availability status
+- Shows current priority order
+- Indicates which agent will be used
 
-## Files Read
+### `commandExists(command)`
 
-None - this command only checks system PATH.
+**Location**: `src/agents/detection.ts:21`
 
-## Files Written
+Checks if a command is available in the system PATH.
 
-None - this is a read-only status command.
+**Returns**: `boolean`
 
-## Exit Codes
+### `getAvailableAgent()`
 
-| Code | Meaning |
-|------|---------|
-| 0 | Success (always) |
+**Location**: `src/agents/detection.ts:32`
 
-## Examples
+Gets the first available agent based on priority.
 
-### Check Agent Status
+**Returns**: `AgentConfig | null`
 
-```bash
-# Show available agents
-agent-foreman agents
+### `getAgentPriorityString()`
+
+**Location**: `src/agents/orchestrator.ts:140`
+
+Returns a string representation of agent priority.
+
+**Returns**: `string` (e.g., "claude → codex → gemini → opencode")
+
+## Agent Configuration
+
+```typescript
+const DEFAULT_AGENTS: AgentConfig[] = [
+  {
+    name: 'claude',
+    command: 'claude',
+    priority: 1,
+  },
+  {
+    name: 'codex',
+    command: 'codex',
+    priority: 2,
+  },
+  {
+    name: 'gemini',
+    command: 'gemini',
+    priority: 3,
+  },
+  {
+    name: 'opencode',
+    command: 'opencode',
+    priority: 4,
+  },
+];
 ```
 
-### Custom Priority
+## Agent Priority Order
 
-```bash
-# Set custom priority order
-export AGENT_FOREMAN_AGENTS="gemini,claude,codex"
-agent-foreman agents
+```mermaid
+graph LR
+    A[Agent Selection] --> B{Claude Available?}
+    B -->|Yes| C[Use Claude]
+    B -->|No| D{Codex Available?}
+    D -->|Yes| E[Use Codex]
+    D -->|No| F{Gemini Available?}
+    F -->|Yes| G[Use Gemini]
+    F -->|No| I{OpenCode Available?}
+    I -->|Yes| J[Use OpenCode]
+    I -->|No| H[Error: No Agent]
+
+    style C fill:#4CAF50
+    style E fill:#2196F3
+    style G fill:#FF9800
+    style J fill:#9C27B0
+    style H fill:#f44336
 ```
 
-## Console Output Example
+| Priority | Agent | Command | Description |
+|----------|-------|---------|-------------|
+| 1 | Claude | `claude` | Anthropic's Claude CLI |
+| 2 | Codex | `codex` | OpenAI's Codex CLI |
+| 3 | Gemini | `gemini` | Google's Gemini CLI |
+| 4 | OpenCode | `opencode` | OpenCode CLI |
+
+## Output Example
+
+```
+🤖 AI Agent Status
+
+Available Agents:
+  ✓ claude (priority: 1) - ACTIVE
+  ✓ codex (priority: 2)
+  ✗ gemini (priority: 3) - not found
+  ✗ opencode (priority: 4) - not found
+
+Priority Order: claude → codex → gemini → opencode
+
+Current Agent: claude
+```
 
 ### All Agents Available
 
 ```
 🤖 AI Agent Status
 
-   Priority Order: Claude > Codex > Gemini
+Available Agents:
+  ✓ claude (priority: 1) - ACTIVE
+  ✓ codex (priority: 2)
+  ✓ gemini (priority: 3)
+  ✓ opencode (priority: 4)
 
-   Installed Agents:
-   ✓ Claude (v1.2.3)
-   ✓ Codex (v0.8.1)
-   ✓ Gemini (v2.0.0)
+Priority Order: claude → codex → gemini → opencode
 
-   First Available: Claude
+Current Agent: claude
 ```
 
-### Partial Availability
+### Only Gemini Available
 
 ```
 🤖 AI Agent Status
 
-   Priority Order: Claude > Codex > Gemini
+Available Agents:
+  ✗ claude (priority: 1) - not found
+  ✗ codex (priority: 2) - not found
+  ✓ gemini (priority: 3) - ACTIVE
+  ✗ opencode (priority: 4) - not found
 
-   Installed Agents:
-   ✗ Claude - not found
-   ✓ Codex (v0.8.1)
-   ✓ Gemini (v2.0.0)
+Priority Order: claude → codex → gemini → opencode
 
-   First Available: Codex
+Current Agent: gemini
 ```
 
 ### No Agents Available
@@ -282,106 +210,133 @@ agent-foreman agents
 ```
 🤖 AI Agent Status
 
-   Priority Order: Claude > Codex > Gemini
+Available Agents:
+  ✗ claude (priority: 1) - not found
+  ✗ codex (priority: 2) - not found
+  ✗ gemini (priority: 3) - not found
+  ✗ opencode (priority: 4) - not found
 
-   Installed Agents:
-   ✗ Claude - not found
-   ✗ Codex - not found
-   ✗ Gemini - not found
+Priority Order: claude → codex → gemini → opencode
 
-   ⚠ No AI agents available!
-   Install at least one of: claude, codex, gemini, opencode
+⚠ No AI agents available!
+Install at least one: claude, codex, gemini, or opencode
 ```
 
-### Custom Priority Order
+## Agent Usage
 
-```
-🤖 AI Agent Status
+Agents are used by these commands:
 
-   Priority Order: Gemini > Claude (custom via AGENT_FOREMAN_AGENTS)
+| Command | Agent Usage |
+|---------|-------------|
+| `init` | Project analysis |
+| `init --analyze` | Architecture analysis |
+| `check` | AI verification |
+| `done` | Verification (when enabled) |
 
-   Installed Agents:
-   ✓ Claude (v1.2.3)
-   ✓ Gemini (v2.0.0)
+## Examples
 
-   First Available: Gemini
-```
-
-## Installing AI Agents
-
-### Claude (Anthropic)
+### Check Agent Status
 
 ```bash
-# Install Claude CLI
-npm install -g @anthropic-ai/claude-cli
-
-# Configure API key
-export ANTHROPIC_API_KEY="your-api-key"
+# View all agent status
+agent-foreman agents
 ```
 
-### Codex (OpenAI)
+## Installing Agents
+
+### Claude CLI (Claude Code)
 
 ```bash
-# Install Codex CLI
-npm install -g @openai/codex-cli
+# Native installer (Recommended - no Node.js required)
+curl -fsSL https://claude.ai/install.sh | bash
 
-# Configure API key
-export OPENAI_API_KEY="your-api-key"
+# Via npm (requires Node.js 18+)
+npm install -g @anthropic-ai/claude-code
+
+# Verify installation
+claude --version
+claude doctor
 ```
 
-### Gemini (Google)
+See: [Claude Code Setup](https://code.claude.com/docs/en/setup)
+
+### Codex CLI
 
 ```bash
-# Install Gemini CLI
+# Via npm
+npm install -g @openai/codex
+
+# Via Homebrew (macOS)
+brew install --cask codex
+
+# Verify installation
+codex --version
+```
+
+See: [OpenAI Codex CLI](https://developers.openai.com/codex/cli)
+
+### Gemini CLI
+
+```bash
+# Via npm (Recommended)
 npm install -g @google/gemini-cli
 
-# Configure API key
-export GOOGLE_API_KEY="your-api-key"
+# Run without installing (for testing)
+npx @google/gemini-cli
+
+# Verify installation
+gemini --version
 ```
 
-### OpenCode
+See: [Gemini CLI GitHub](https://github.com/google-gemini/gemini-cli)
+
+### OpenCode CLI
 
 ```bash
-# Install OpenCode CLI
+# Quick install script (Recommended)
 curl -fsSL https://opencode.ai/install | bash
-# or via npm
-npm install -g opencode-ai
 
-# Configure via opencode auth login
-opencode auth login
+# Via npm
+npm install -g opencode-ai@latest
+
+# Via Homebrew (macOS/Linux)
+brew install opencode
+
+# Via Scoop (Windows)
+scoop bucket add extras && scoop install extras/opencode
+
+# Verify installation
+opencode --version
 ```
 
-## Use Cases
+See: [OpenCode GitHub](https://github.com/sst/opencode)
 
-### Debugging Agent Issues
+## Agent Selection API
 
-```bash
-# Check which agent is being used
-agent-foreman agents
+```typescript
+// Get first available agent
+const agent = getAvailableAgent();
+if (agent) {
+  console.log(`Using: ${agent.name}`);
+}
 
-# If wrong agent, set custom priority
-export AGENT_FOREMAN_AGENTS="claude"
+// Check specific agent
+if (commandExists('claude')) {
+  // Claude is available
+}
+
+// Get all available agents
+const agents = filterAvailableAgents(DEFAULT_AGENTS);
 ```
 
-### CI/CD Configuration
+## Error Handling
 
-```bash
-# Ensure specific agent in CI
-export AGENT_FOREMAN_AGENTS="codex"
-agent-foreman init
-```
-
-### Multi-Model Workflows
-
-```bash
-# Use different agents for different operations
-AGENT_FOREMAN_AGENTS="claude" agent-foreman analyze
-AGENT_FOREMAN_AGENTS="gemini" agent-foreman check feature.id
-```
+| Error | Cause | Resolution |
+|-------|-------|------------|
+| "No AI agents available" | No CLIs installed | Install claude, codex, gemini, or opencode |
+| Agent not found | CLI not in PATH | Check installation and PATH |
 
 ## Related Commands
 
-- `agent-foreman analyze` - Uses AI agent for analysis
-- `agent-foreman init` - Uses AI agent for project detection
-- `agent-foreman check` - Uses AI agent for verification
-- `agent-foreman scan` - Uses AI agent for capability detection
+- [`init`](./init.md) - Uses agents for analysis
+- [`check`](./check.md) - Uses agents for verification

@@ -4,24 +4,6 @@
 import { describe, it, expect, beforeEach, afterEach, vi } from "vitest";
 import * as fs from "node:fs";
 import * as path from "node:path";
-
-// Mock fs module at the top level to prevent .env loading in tests
-// This ensures tests have full control over environment variables
-vi.mock("node:fs", async (importOriginal) => {
-  const actual = (await importOriginal()) as typeof fs;
-  return {
-    ...actual,
-    readFileSync: vi.fn().mockImplementation((filePath: string, encoding?: string) => {
-      // Only mock .env files to prevent test pollution
-      if (typeof filePath === "string" && (filePath.endsWith(".env") || filePath.includes(".agent-foreman.env"))) {
-        throw new Error("ENOENT: no such file or directory");
-      }
-      // Use actual implementation for other files
-      return actual.readFileSync(filePath, encoding as BufferEncoding);
-    }),
-  };
-});
-
 import {
   DEFAULT_TIMEOUTS,
   TIMEOUT_ENV_VARS,
@@ -40,8 +22,6 @@ describe("Timeout Configuration", () => {
   const originalEnv: Record<string, string | undefined> = {};
 
   beforeEach(() => {
-    // Reset env loaded state to ensure clean test isolation
-    _resetEnvLoadedForTesting();
     // Save original values for timeout env vars
     for (const key of Object.values(TIMEOUT_ENV_VARS)) {
       originalEnv[key] = process.env[key];
@@ -294,15 +274,15 @@ describe("Timeout Configuration", () => {
 
   describe("Agent Priority Configuration", () => {
     describe("DEFAULT_AGENT_PRIORITY", () => {
-      it("should have default priority order", () => {
-        expect(DEFAULT_AGENT_PRIORITY).toEqual(["claude", "codex", "gemini"]);
+      it("should have default priority order (Claude > Codex > Gemini > OpenCode)", () => {
+        expect(DEFAULT_AGENT_PRIORITY).toEqual(["claude", "codex", "gemini", "opencode"]);
       });
 
       it("should be a readonly array type", () => {
         // The array is readonly at compile time via 'as const'
         // At runtime, arrays are still mutable but TypeScript prevents modifications
         expect(Array.isArray(DEFAULT_AGENT_PRIORITY)).toBe(true);
-        expect(DEFAULT_AGENT_PRIORITY.length).toBe(3);
+        expect(DEFAULT_AGENT_PRIORITY.length).toBe(4);
       });
     });
 
@@ -322,19 +302,19 @@ describe("Timeout Configuration", () => {
     describe("getAgentPriority", () => {
       it("should return default priority when env var not set", () => {
         const priority = getAgentPriority();
-        expect(priority).toEqual(["claude", "codex", "gemini"]);
+        expect(priority).toEqual(["claude", "codex", "gemini", "opencode"]);
       });
 
       it("should return default priority when env var is empty", () => {
         process.env[AGENT_ENV_VAR] = "";
         const priority = getAgentPriority();
-        expect(priority).toEqual(["claude", "codex", "gemini"]);
+        expect(priority).toEqual(["claude", "codex", "gemini", "opencode"]);
       });
 
       it("should return default priority when env var is whitespace only", () => {
         process.env[AGENT_ENV_VAR] = "   ";
         const priority = getAgentPriority();
-        expect(priority).toEqual(["claude", "codex", "gemini"]);
+        expect(priority).toEqual(["claude", "codex", "gemini", "opencode"]);
       });
 
       it("should parse comma-separated agent names", () => {
@@ -401,7 +381,7 @@ describe("Timeout Configuration", () => {
 
         process.env[AGENT_ENV_VAR] = "invalid,unknown,bad";
         const priority = getAgentPriority();
-        expect(priority).toEqual(["claude", "codex", "gemini"]);
+        expect(priority).toEqual(["claude", "codex", "gemini", "opencode"]);
 
         // Should warn about using defaults
         expect(warnSpy).toHaveBeenCalledWith(
@@ -514,11 +494,8 @@ key=
 
 /**
  * Tests for .env file parsing - covers lines 120-135
- * Note: These tests are skipped because the fs module is mocked at top level
- * to prevent .env file pollution. The actual parsing logic is tested in
- * "loadEnvFile - direct quote parsing" below.
  */
-describe.skip("loadEnvFile - quote handling", () => {
+describe("loadEnvFile - quote handling", () => {
   const envPath = path.join(process.cwd(), ".env");
   let originalEnvFile: string | null = null;
   const originalEnv: Record<string, string | undefined> = {};
@@ -765,5 +742,37 @@ describe("getAllTimeouts - branch coverage", () => {
     expect(keys).toContain("AI_VERIFICATION");
     expect(keys).toContain("AI_CAPABILITY_DISCOVERY");
     expect(keys).toContain("AI_DEFAULT");
+  });
+});
+
+describe("_resetEnvLoadedForTesting", () => {
+  it("should be a function", () => {
+    expect(typeof _resetEnvLoadedForTesting).toBe("function");
+  });
+
+  it("should not throw when called", () => {
+    expect(() => _resetEnvLoadedForTesting()).not.toThrow();
+  });
+
+  it("should allow env to be reloaded after reset", () => {
+    // First, set a custom env var
+    process.env.AGENT_FOREMAN_TIMEOUT_VERIFY = "999999";
+
+    // Get the timeout (will trigger env loading)
+    const timeout1 = getTimeout("AI_VERIFICATION");
+    expect(timeout1).toBe(999999);
+
+    // Reset the env loaded flag
+    _resetEnvLoadedForTesting();
+
+    // Change the env var
+    process.env.AGENT_FOREMAN_TIMEOUT_VERIFY = "888888";
+
+    // Get the timeout again (should reload env)
+    const timeout2 = getTimeout("AI_VERIFICATION");
+    expect(timeout2).toBe(888888);
+
+    // Clean up
+    delete process.env.AGENT_FOREMAN_TIMEOUT_VERIFY;
   });
 });

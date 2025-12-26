@@ -90,7 +90,7 @@ jobs:
         run: npm install -g npm@latest
 
       - name: Install dependencies
-        run: npm ci
+        run: bun install
 
       - name: Generate stub files for TypeScript
         run: bun scripts/embed-assets.ts
@@ -119,6 +119,12 @@ jobs:
         run: |
           mkdir -p release
           find artifacts -type f -exec mv {} release/ \;
+
+      - name: Generate SHA256SUMS
+        run: |
+          cd release
+          sha256sum * > SHA256SUMS.txt
+          cat SHA256SUMS.txt
 
       - name: Create Release
         uses: softprops/action-gh-release@v2

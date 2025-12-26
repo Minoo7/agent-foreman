@@ -13,7 +13,8 @@
  */
 
 import { $ } from "bun";
-import { existsSync, mkdirSync, readFileSync } from "node:fs";
+import { createHash } from "node:crypto";
+import { existsSync, mkdirSync, readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const ROOT_DIR = join(import.meta.dirname, "..");
@@ -53,7 +54,7 @@ function getOutputName(target: TargetKey): string {
 /**
  * Build for a specific target
  */
-async function buildTarget(target: TargetKey): Promise<boolean> {
+async function buildTarget(target: TargetKey, version: string): Promise<boolean> {
   const bunTarget = TARGETS[target];
   const outputName = getOutputName(target);
   const outputPath = join(DIST_BIN_DIR, outputName);
@@ -61,9 +62,11 @@ async function buildTarget(target: TargetKey): Promise<boolean> {
   console.log(`\nBuilding for ${target}...`);
   console.log(`  Target: ${bunTarget}`);
   console.log(`  Output: ${outputPath}`);
+  console.log(`  Version: ${version}`);
 
   try {
-    await $`bun build ${ENTRY_POINT} --compile --target ${bunTarget} --outfile ${outputPath}`.quiet();
+    // Inject version at compile time using --define
+    await $`bun build ${ENTRY_POINT} --compile --target ${bunTarget} --outfile ${outputPath} --define __VERSION__='"${version}"'`.quiet();
     console.log(`  ✓ Success`);
     return true;
   } catch (error) {
@@ -121,28 +124,53 @@ function parseArgs(): { targets: TargetKey[] } {
 }
 
 /**
- * Check prerequisites
+ * Generate SHA256SUMS.txt for all binaries in dist/bin
  */
-function checkPrerequisites(): void {
-  // Check if embedded assets exist
-  const embeddedTemplates = join(ROOT_DIR, "src/gitignore/embedded-templates.generated.ts");
-  const embeddedPlugins = join(ROOT_DIR, "src/plugins-bundle.generated.ts");
+function generateChecksums(): void {
+  console.log("\n=== Generating SHA256SUMS.txt ===");
 
-  if (!existsSync(embeddedTemplates)) {
-    console.error("Error: Embedded templates not found.");
-    console.error("Run 'bun scripts/embed-assets.ts' first.");
-    process.exit(1);
+  const files = readdirSync(DIST_BIN_DIR).filter(
+    (f) => f.startsWith("agent-foreman-") && !f.endsWith(".txt")
+  );
+
+  if (files.length === 0) {
+    console.log("No binary files found, skipping checksum generation");
+    return;
   }
 
-  if (!existsSync(embeddedPlugins)) {
-    console.error("Error: Embedded plugins not found.");
-    console.error("Run 'bun scripts/embed-assets.ts' first.");
+  const checksums: string[] = [];
+
+  for (const file of files.sort()) {
+    const filePath = join(DIST_BIN_DIR, file);
+    const content = readFileSync(filePath);
+    const hash = createHash("sha256").update(content).digest("hex");
+    checksums.push(`${hash}  ${file}`);
+    console.log(`  ${file}: ${hash.substring(0, 16)}...`);
+  }
+
+  const checksumsPath = join(DIST_BIN_DIR, "SHA256SUMS.txt");
+  writeFileSync(checksumsPath, checksums.join("\n") + "\n");
+  console.log(`\n✓ SHA256SUMS.txt generated with ${files.length} entries`);
+}
+
+/**
+ * Check prerequisites and return version
+ */
+function checkPrerequisites(): string {
+  // Check if embedded assets exist (current project uses single file)
+  const embeddedAssets = join(ROOT_DIR, "src/embedded-assets.generated.ts");
+
+  if (!existsSync(embeddedAssets)) {
+    console.error("Error: Embedded assets not found.");
+    console.error("Run 'npm run build:embed' first.");
     process.exit(1);
   }
 
   // Read version
   const packageJson = JSON.parse(readFileSync(join(ROOT_DIR, "package.json"), "utf-8"));
-  console.log(`Building agent-foreman v${packageJson.version}`);
+  const version = packageJson.version;
+  console.log(`Building agent-foreman v${version}`);
+  return version;
 }
 
 /**
@@ -151,7 +179,7 @@ function checkPrerequisites(): void {
 async function main(): Promise<void> {
   console.log("=== Building Standalone Executables ===");
 
-  checkPrerequisites();
+  const version = checkPrerequisites();
 
   const { targets } = parseArgs();
   console.log(`\nTargets: ${targets.join(", ")}`);
@@ -165,7 +193,7 @@ async function main(): Promise<void> {
   const results: { target: TargetKey; success: boolean }[] = [];
 
   for (const target of targets) {
-    const success = await buildTarget(target);
+    const success = await buildTarget(target, version);
     results.push({ target, success });
   }
 
@@ -188,6 +216,9 @@ async function main(): Promise<void> {
     }
     process.exit(1);
   }
+
+  // Generate SHA256SUMS.txt for all binaries
+  generateChecksums();
 
   console.log(`\nOutput directory: ${DIST_BIN_DIR}`);
 }

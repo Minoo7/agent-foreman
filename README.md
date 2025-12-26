@@ -1,11 +1,11 @@
 # agent-foreman
 
-> Long Task Harness for AI agents - feature-driven development with external memory
+> Stop AI agents from half-building features. Ship complete code in one session.
 
 [![npm version](https://img.shields.io/npm/v/agent-foreman.svg)](https://www.npmjs.com/package/agent-foreman)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-[Chinese](./README_zh.md) | [Detailed Usage Guide](./docs/USAGE.md)
+[Chinese](./README_zh.md) | [Detailed Guide](./docs/USAGE.md)
 
 ## Problem
 
@@ -26,225 +26,95 @@ AI coding agents face three common failure modes:
 
 ---
 
-## Installation
+## Quick Start
 
 ```bash
-# Global installation via npm
-npm install -g agent-foreman
-
-# Or use with npx
-npx agent-foreman --help
-
-# Or download standalone binary from GitHub Releases
-# https://github.com/mylukin/agent-foreman/releases
+/plugin install agent-foreman        # 1. Install
+/agent-foreman:init Build auth API   # 2. Initialize
+/agent-foreman:run                   # 3. Let AI work
 ```
 
 ---
 
-## Claude Code Plugin (Recommended)
+## Installation
 
-agent-foreman is designed as a **Claude Code plugin**. This is the recommended way to use it.
+```bash
+# Quick install (binary)
+curl -fsSL https://raw.githubusercontent.com/mylukin/agent-foreman/main/scripts/install.sh | bash
 
-### 1. Install Plugin
+# Via npm
+npm install -g agent-foreman
+
+# Or use npx directly
+npx agent-foreman --help
+```
+
+Manual download: [GitHub Releases](https://github.com/mylukin/agent-foreman/releases)
+
+---
+
+## Usage
+
+### Plugin Commands (Recommended)
 
 ```
 /plugin marketplace add mylukin/agent-foreman
 /plugin install agent-foreman
 ```
 
-### 2. Slash Commands
-
 | Command | Description |
 |---------|-------------|
 | `/agent-foreman:status` | View project status and progress |
 | `/agent-foreman:init` | Initialize harness with project goal |
 | `/agent-foreman:analyze` | Analyze existing project structure |
-| `/agent-foreman:next` | Get next priority feature to work on |
-| `/agent-foreman:run` | Auto-complete all pending features |
+| `/agent-foreman:spec` | Transform requirements into tasks |
+| `/agent-foreman:next` | Get next priority task |
+| `/agent-foreman:run` | Auto-complete all pending tasks |
 
-### 3. Usage Examples
-
-**Initialize a new project:**
+**Transform requirements into tasks:**
 ```
-/agent-foreman:init Build a REST API for user management
-```
-
-**Check status and work on features:**
-```
-/agent-foreman:status
-/agent-foreman:next
+/agent-foreman:spec Build a user authentication system
 ```
 
-**Auto-complete all tasks:**
 ```
-/agent-foreman:run
-```
-
-**Work on specific feature:**
-```
-/agent-foreman:run auth.login
+Requirement → [PM→UX→Tech→QA] → Spec Files → BREAKDOWN Tasks → /run → Implementation
 ```
 
-### 4. Command Options
+<details>
+<summary><b>CLI Commands (standalone)</b></summary>
 
-Commands accept natural language and flags:
-
-```
-/agent-foreman:init --mode new        # Fresh start, replace existing
-/agent-foreman:init --mode scan       # Preview only, don't save
-/agent-foreman:analyze --verbose      # Detailed output
-```
-
----
-
-## CLI Commands
-
-For standalone CLI usage (without Claude Code):
+For standalone CLI usage without Claude Code:
 
 | Command | Description |
 |---------|-------------|
-| `analyze [output]` | Generate project architecture report |
 | `init [goal]` | Initialize or upgrade the harness |
 | `next [feature_id]` | Show next feature to work on |
 | `status` | Show current project status |
-| `check <feature_id>` | Preview verification without completing |
+| `check [feature_id]` | Verify code changes or task completion |
 | `done <feature_id>` | Verify, mark complete, and auto-commit |
+| `fail <feature_id>` | Mark a task as failed |
 | `impact <feature_id>` | Analyze impact of changes |
+| `tdd [mode]` | View or set TDD mode |
 | `agents` | Show available AI agents |
-| `scan` | Scan project verification capabilities |
 | `install` | Install Claude Code plugin |
 | `uninstall` | Uninstall Claude Code plugin |
 
-See [Detailed Usage Guide](./docs/USAGE.md) for complete options.
-
----
-
-## Why It Works
-
-The core insight: **AI agents need the same tooling that makes human engineering teams effective**.
-
-Human engineers don't rely on memory either. We use:
-- Git for version history
-- Issue trackers for task management
-- Documentation for handoffs
-- Tests for verification
-
-agent-foreman brings these same patterns to AI:
-
-| Human Practice | AI Equivalent |
-|----------------|---------------|
-| Scrum board | `feature_list.json` |
-| Sprint notes | `progress.log` |
-| CI/CD pipeline | `init.sh check` |
-| Code review | Acceptance criteria |
-
-### Why JSON Instead of Markdown?
-
-From Anthropic's research:
-
-> "Models are more likely to respect and accurately update JSON structures than markdown checklists."
-
-When features are stored as JSON with explicit `status` fields, AI agents:
-- Don't accidentally delete items
-- Update status correctly
-- Respect the schema
+</details>
 
 ---
 
 ## Workflow
 
-agent-foreman embraces **TDD (Test-Driven Development)** philosophy: define acceptance criteria first, implement features second, verify at the end.
-
-```text
-┌──────────────────────────────────────────────────────────────────────────┐
-│                        AGENT-FOREMAN WORKFLOW                            │
-│                      (Based on TDD Principles)                           │
-├──────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  INITIALIZE                                                              │
-│  ┌─────────┐    ┌──────────┐    ┌──────────┐                            │
-│  │ analyze │───▶│   scan   │───▶│   init   │                            │
-│  │         │    │          │    │ generate │                            │
-│  └─────────┘    └──────────┘    └──────────┘                            │
-│                                       │                                  │
-│                                       ▼                                  │
-│                             Define acceptance criteria (RED)             │
-│                             feature_list.json                            │
-│                                                                          │
-├──────────────────────────────────────────────────────────────────────────┤
-│                                                                          │
-│  TDD DEVELOPMENT LOOP                                                    │
-│                                                                          │
-│      ┌──────────────────────────────────────────────────────┐           │
-│      │                         LOOP                         │           │
-│      ▼                                                      │           │
-│  ┌──────────┐    ┌──────────────────────────────────────┐  │           │
-│  │  next    │───▶│  RED: View acceptance criteria        │  │           │
-│  │ get task │    │  Criteria = failing test cases        │  │           │
-│  └──────────┘    └──────────────────────────────────────┘  │           │
-│                                   │                         │           │
-│                                   ▼                         │           │
-│                  ┌──────────────────────────────────────┐  │           │
-│                  │  GREEN: Implement feature             │  │           │
-│                  │  Write minimum code to pass criteria  │  │           │
-│                  └──────────────────────────────────────┘  │           │
-│                                   │                         │           │
-│                                   ▼                         │           │
-│                  ┌──────────────────────────────────────┐  │           │
-│                  │  check <id>                           │  │           │
-│                  │  - Run tests to verify implementation │  │           │
-│                  │  - AI validates acceptance criteria   │  │           │
-│                  └──────────────────────────────────────┘  │           │
-│                                   │                         │           │
-│                                   ▼                         │           │
-│                  ┌──────────────────────────────────────┐  │           │
-│                  │  done <id>                            │  │           │
-│                  │  - Mark feature complete              │  │           │
-│                  │  - Auto-commit (REFACTOR optional)    │  │           │
-│                  └──────────────────────────────────────┘  │           │
-│                                   │                         │           │
-│                                   ▼                         │           │
-│                          ┌───────────────┐                 │           │
-│                          │ More tasks?   │─────YES─────────┘           │
-│                          └───────────────┘                              │
-│                                   │ NO                                  │
-│                                   ▼                                     │
-│                  ┌───────────────────────────────────────┐             │
-│                  │  All features passing! (100%)         │             │
-│                  │  ARCHITECTURE.md updated              │             │
-│                  └───────────────────────────────────────┘             │
-│                                                                          │
-└──────────────────────────────────────────────────────────────────────────┘
+```
+next → implement → check → done → repeat
 ```
 
-**TDD Core Principles:**
-- **RED** — Define acceptance criteria first (equivalent to failing tests)
-- **GREEN** — Write minimum code to make criteria pass
-- **REFACTOR** — Optimize under test protection
-
----
-
-## Core Files
-
-| File | Purpose |
-|------|---------|
-| `ai/feature_list.json` | Feature backlog with status |
-| `ai/progress.log` | Session handoff audit log |
-| `ai/init.sh` | Environment bootstrap script |
-| `ai/capabilities.json` | Cached project capabilities |
-| `CLAUDE.md` | AI agent instructions |
-| `docs/ARCHITECTURE.md` | AI-generated project architecture |
-
-## Feature Status Values
-
-| Status | Meaning |
-|--------|---------|
-| `failing` | Not yet implemented |
-| `passing` | Acceptance criteria met |
-| `blocked` | External dependency blocking |
-| `needs_review` | May be affected by changes |
-| `failed` | Implementation attempted but verification failed |
-| `deprecated` | No longer needed |
+| Step | Command | What Happens |
+|------|---------|--------------|
+| 1 | `next` | Get task with acceptance criteria |
+| 2 | implement | Write code to satisfy criteria |
+| 3 | `check` | Verify implementation |
+| 4 | `done` | Mark complete, auto-commit |
 
 ---
 
@@ -255,6 +125,51 @@ agent-foreman embraces **TDD (Test-Driven Development)** philosophy: define acce
 3. **Review impact** - Run impact analysis after changes
 4. **Clean commits** - One feature = one atomic commit
 5. **Read first** - Always check feature list and progress log
+
+---
+
+## Reference
+
+<details>
+<summary><b>Core Files</b></summary>
+
+| File | Purpose |
+|------|---------|
+| `ai/tasks/index.json` | Task index with status summary |
+| `ai/tasks/{module}/{id}.md` | Individual task definitions |
+| `ai/progress.log` | Session handoff audit log |
+| `ai/init.sh` | Environment bootstrap script |
+| `CLAUDE.md` | AI agent instructions |
+
+</details>
+
+<details>
+<summary><b>Status Values</b></summary>
+
+| Status | Meaning |
+|--------|---------|
+| `failing` | Not yet implemented |
+| `passing` | Acceptance criteria met |
+| `blocked` | External dependency blocking |
+| `needs_review` | May be affected by changes |
+| `failed` | Verification failed |
+| `deprecated` | No longer needed |
+
+</details>
+
+<details>
+<summary><b>Why It Works</b></summary>
+
+AI agents need the same tooling that makes human teams effective:
+
+| Human Practice | AI Equivalent |
+|----------------|---------------|
+| Scrum board | `ai/tasks/index.json` |
+| Sprint notes | `progress.log` |
+| CI/CD pipeline | `init.sh check` |
+| Code review | Acceptance criteria |
+
+</details>
 
 ---
 
